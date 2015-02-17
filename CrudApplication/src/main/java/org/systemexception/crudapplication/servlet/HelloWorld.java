@@ -7,6 +7,7 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author leo
  */
 public class HelloWorld extends HttpServlet {
+
+	private static final Logger LOG = Logger.getLogger(HelloWorld.class.getCanonicalName());
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -32,6 +35,7 @@ public class HelloWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		try {
 			/* TODO output your page here. You may use following sample code. */
+			LOG.info("logged call");
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
