@@ -2,19 +2,17 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.pojo.Employees;
 
 /**
  *
  * @author leo
  */
-public class HelloWorld extends HttpServlet {
-
-	private static final Logger LOG = Logger.getLogger(HelloWorld.class.getCanonicalName());
+public class ListEmployees extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,18 +26,21 @@ public class HelloWorld extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		LOG.info("logged call");
+		Employees employees = new Employees();
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
 			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
-			out.println("<title>Servlet HelloWorld</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>Servlet HelloWorld at " + request.getContextPath() + "</h1>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("<h1>Employee List</h1>");
+			// Start printing table
+			out.println("<table class=\"table table-hover\">");
+			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
+			for (int i = 0; i < employees.countEmployees(); i++) {
+				String empID = employees.getEmpList().get(i).getEmpIdString();
+				String empName = employees.getEmpList().get(i).getEmpName();
+				String empLastName = employees.getEmpList().get(i).getEmpSurname();
+				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td></tr>");
+			}
+			out.println("</table>");
+			out.println("<hr>");
 		} finally {
 			out.close();
 		}

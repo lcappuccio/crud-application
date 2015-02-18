@@ -2,6 +2,7 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author leo
  */
-public class HelloWorld extends HttpServlet {
+public class BadWorld extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(HelloWorld.class.getCanonicalName());
+	private static final Logger LOG = Logger.getLogger(BadWorld.class.getCanonicalName());
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,18 +29,14 @@ public class HelloWorld extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		Random rnd = new Random();
+		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
 		LOG.info("logged call");
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
 			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
-			out.println("<title>Servlet HelloWorld</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>Servlet HelloWorld at " + request.getContextPath() + "</h1>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("<h1>Bad World!</h1>");
+			out.println("Guess this: " + rndStr);
+			out.println("<hr>");
 		} finally {
 			out.close();
 		}
