@@ -7,14 +7,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.pojo.Employee;
 
 /**
  *
  * @author leo
  */
-public class HelloWorld extends HttpServlet {
+public class InsertEmployee extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(HelloWorld.class.getCanonicalName());
+	private static final Logger LOG = Logger.getLogger(InsertEmployee.class.getCanonicalName());
+	private final EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+	private Employee emp;
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,18 +32,23 @@ public class HelloWorld extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		LOG.info("logged call");
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
 			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
-			out.println("<title>Servlet HelloWorld</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>Servlet HelloWorld at " + request.getContextPath() + "</h1>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("<h1>Insert Employee Data</h1>");
+			out.println("<form class=\"form-inline\" action=\"InsertEmployee\" method=\"POST\">");
+
+			out.println("<div class=\"form-group\">"
+					+ "<label class=\"sr-only\" for=\"employeeName\">Name</label>"
+					+ "<input type=\"text\" class=\"form-control\" id=\"employeeName\" placeholder=\"Enter employee name\" name=\"employeeName\"></div>");
+
+			out.println("<div class=\"form-group\">"
+					+ "<label class=\"sr-only\" for=\"employeeSurname\">Surname</label>"
+					+ "<input type=\"text\" class=\"form-control\" id=\"employeeSurname\" placeholder=\"Enter employee name\" name=\"employeeSurname\"></div>");
+
+			out.println("<button type=\"submit\" class=\"btn btn-default\">Submit</button>");
+
+			out.println("</form>");
+			out.println("<hr>");
 		} finally {
 			out.close();
 		}
@@ -71,6 +80,11 @@ public class HelloWorld extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		String empName = request.getParameter("employeeName");
+		String empSurname = request.getParameter("employeeSurname");
+		emp = new Employee(empName, empSurname);
+		empDao.insertEmployee(emp);
 		processRequest(request, response);
 	}
 
