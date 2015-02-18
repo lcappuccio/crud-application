@@ -4,9 +4,33 @@
         <servlet-name>HelloWorld</servlet-name>
         <servlet-class>org.systemexception.crudapplication.servlet.HelloWorld</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BadWorld</servlet-name>
+        <servlet-class>org.systemexception.crudapplication.servlet.BadWorld</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertEmployee</servlet-name>
+        <servlet-class>org.systemexception.crudapplication.servlet.InsertEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListEmployees</servlet-name>
+        <servlet-class>org.systemexception.crudapplication.servlet.ListEmployees</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/HelloWorld</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BadWorld</servlet-name>
+        <url-pattern>/BadWorld</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertEmployee</servlet-name>
+        <url-pattern>/InsertEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListEmployees</servlet-name>
+        <url-pattern>/ListEmployees</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
