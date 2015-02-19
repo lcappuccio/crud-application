@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -33,10 +34,18 @@ public class BadWorld extends HttpServlet {
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
 		LOG.info("logged call");
 		try {
-			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println(Util.bootstrapCss);
+			out.println("<title>Servlet BadWorld</title>");
+			out.println("</head>");
+			out.println("<body>");
 			out.println("<h1>Bad World!</h1>");
 			out.println("Guess this: " + rndStr);
 			out.println("<hr>");
+			out.println("</body>");
+			out.println("</html>");
 		} finally {
 			out.close();
 		}

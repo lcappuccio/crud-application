@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -33,8 +34,14 @@ public class InsertEmployee extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		try {
-			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
-			out.println("<h1>Insert Employee Data</h1>");
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println(Util.bootstrapCss);
+			out.println("<title>Insert Employee</title>");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<h1>Insert Employee</h1>");
 			out.println("<form class=\"form-inline\" action=\"InsertEmployee\" method=\"POST\">");
 
 			out.println("<div class=\"form-group\">"
@@ -49,6 +56,8 @@ public class InsertEmployee extends HttpServlet {
 
 			out.println("</form>");
 			out.println("<hr>");
+			out.println("</body>");
+			out.println("</html>");
 		} finally {
 			out.close();
 		}

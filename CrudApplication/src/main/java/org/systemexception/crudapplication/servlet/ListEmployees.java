@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.systemexception.crudapplication.pojo.Employees;
+import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -28,8 +29,14 @@ public class ListEmployees extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
 		try {
-			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
-			out.println("<h1>Employee List</h1>");
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println(Util.bootstrapCss);
+			out.println("<title>Employee List</title>");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<h1>List Employees</h1>");
 			// Start printing table
 			out.println("<table class=\"table table-hover\">");
 			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
@@ -41,6 +48,8 @@ public class ListEmployees extends HttpServlet {
 			}
 			out.println("</table>");
 			out.println("<hr>");
+			out.println("</body>");
+			out.println("</html>");
 		} finally {
 			out.close();
 		}
