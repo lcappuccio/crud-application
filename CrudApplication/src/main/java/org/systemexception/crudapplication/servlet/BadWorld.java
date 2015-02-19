@@ -3,6 +3,7 @@ package org.systemexception.crudapplication.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ public class BadWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
-		LOG.info("logged call");
+		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");

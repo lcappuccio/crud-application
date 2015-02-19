@@ -2,6 +2,8 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,8 @@ import org.systemexception.crudapplication.pojo.Util;
  * @author leo
  */
 public class ListEmployees extends HttpServlet {
+
+	private static final Logger LOG = Logger.getLogger(ListEmployees.class.getCanonicalName());
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,6 +32,7 @@ public class ListEmployees extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
+		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");

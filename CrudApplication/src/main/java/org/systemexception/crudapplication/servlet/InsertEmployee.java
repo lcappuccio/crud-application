@@ -2,6 +2,7 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,7 @@ public class InsertEmployee extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
@@ -95,6 +97,7 @@ public class InsertEmployee extends HttpServlet {
 		emp = new Employee(empName, empSurname);
 		empDao.insertEmployee(emp);
 		processRequest(request, response);
+		LOG.log(Level.INFO, "Insert employee: {0}, {1}", new Object[]{empName, empSurname});
 	}
 
 	/**
