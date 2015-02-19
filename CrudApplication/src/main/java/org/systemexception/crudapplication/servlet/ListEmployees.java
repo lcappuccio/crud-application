@@ -32,7 +32,7 @@ public class ListEmployees extends HttpServlet {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
-			out.println(Util.bootstrapCss);
+			out.println(Util.BOOTSTRAP_CSS_PATH);
 			out.println("<title>Employee List</title>");
 			out.println("</head>");
 			out.println("<body>");

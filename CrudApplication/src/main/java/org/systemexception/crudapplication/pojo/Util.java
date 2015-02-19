@@ -7,6 +7,6 @@ package org.systemexception.crudapplication.pojo;
  */
 public class Util {
 
-	public static final String bootstrapCss = "<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">";
+	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">";
 
 }
