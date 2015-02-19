@@ -46,7 +46,7 @@ public class ListEmployees extends HttpServlet {
 			out.println("<table class=\"table table-hover\">");
 			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
 			for (int i = 0; i < employees.countEmployees(); i++) {
-				String empID = employees.getEmpList().get(i).getEmpIdString();
+				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
 				String empLastName = employees.getEmpList().get(i).getEmpSurname();
 				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td></tr>");

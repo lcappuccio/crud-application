@@ -26,7 +26,7 @@ public class TestPojoMapper {
 	@Test
 	public void testEmpToJson() {
 		// TODO refactor PojoMapper to return a specific set of Employee attributes
-		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\",\"empIdString\":\"1\"}".equals(sut.empToJson(emp)));
+		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.empToJson(emp)));
 	}
 
 	@Test
