@@ -31,6 +31,14 @@ public class PojoMapper {
 		}
 	}
 
+	public String employeesToJson(Employees employees) throws PojoMapperException {
+		try {
+			return objectMapper.writeValueAsString(employees);
+		} catch (IOException e) {
+			throw new PojoMapperException(exceptionToString(e));
+		}
+	}
+
 	private String exceptionToString(Exception exception) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
