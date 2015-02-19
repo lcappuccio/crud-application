@@ -3,6 +3,7 @@ package org.systemexception.crudapplication.test;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.systemexception.crudapplication.exception.PojoMapperException;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.PojoMapper;
@@ -24,13 +25,13 @@ public class TestPojoMapper {
 	}
 
 	@Test
-	public void testEmpToJson() {
+	public void testEmpToJson() throws PojoMapperException {
 		// TODO refactor PojoMapper to return a specific set of Employee attributes
 		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.empToJson(emp)));
 	}
 
 	@Test
-	public void testJsonToEmp() {
+	public void testJsonToEmp() throws PojoMapperException {
 		emp = empDao.findById(1);
 		Employee empJson = sut.jsonToEmp("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
 		assertTrue(emp.equals(empJson));
