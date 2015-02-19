@@ -2,7 +2,9 @@
 A basic crud application example
 
 ## Installation
-Download, compile and deploy to any web container
+1. Create the necessary database table on your favourite RDBMS (see script.sql)
+2. Download and change JDBC URL, username and password in org.systemexception.crudapplication.impl.EmployeeDaoImpl
+3. Compile and deploy to you favourite web container
 
 ## Usage
 Available servlets:
