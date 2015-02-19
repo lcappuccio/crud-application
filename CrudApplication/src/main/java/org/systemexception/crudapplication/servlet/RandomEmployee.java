@@ -2,22 +2,25 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.systemexception.crudapplication.pojo.Employees;
+import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
  * @author leo
  */
-public class ListEmployees extends HttpServlet {
+public class RandomEmployee extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(ListEmployees.class.getCanonicalName());
+	private static final Logger LOG = Logger.getLogger(RandomEmployee.class.getCanonicalName());
+	private EmployeeDaoImpl empDao = new EmployeeDaoImpl();
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,7 +34,6 @@ public class ListEmployees extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		Employees employees = new Employees();
 		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
 		try {
 			out.println("<!DOCTYPE html>");
@@ -41,17 +43,12 @@ public class ListEmployees extends HttpServlet {
 			out.println("<title>Employee List</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println("<h1>List Employees</h1>");
-			// Start printing table
-			out.println("<table class=\"table table-hover\">");
-			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
-			for (int i = 0; i < employees.countEmployees(); i++) {
-				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
-				String empName = employees.getEmpList().get(i).getEmpName();
-				String empLastName = employees.getEmpList().get(i).getEmpSurname();
-				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td></tr>");
-			}
-			out.println("</table>");
+			out.println("<h1>Random Springfield Nuclear Plant Employee</h1>");
+			// Fetch random Employee details
+			Random random = new Random();
+			int randomId = random.nextInt(empDao.countEmployees());
+			Employee emp = empDao.findById(randomId);
+			out.println("Employee: " + emp.getEmpName() + " " + emp.getEmpSurname());
 			out.println("<hr>");
 			out.println("</body>");
 			out.println("</html>");

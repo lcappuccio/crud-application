@@ -3,11 +3,13 @@ package org.systemexception.crudapplication.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -31,12 +33,20 @@ public class BadWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
-		LOG.info("logged call");
+		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
 		try {
-			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println(Util.BOOTSTRAP_CSS_PATH);
+			out.println("<title>Servlet BadWorld</title>");
+			out.println("</head>");
+			out.println("<body>");
 			out.println("<h1>Bad World!</h1>");
 			out.println("Guess this: " + rndStr);
 			out.println("<hr>");
+			out.println("</body>");
+			out.println("</html>");
 		} finally {
 			out.close();
 		}

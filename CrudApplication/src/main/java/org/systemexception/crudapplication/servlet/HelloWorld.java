@@ -2,11 +2,13 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -28,12 +30,12 @@ public class HelloWorld extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		LOG.info("logged call");
+		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
-			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
+			out.println(Util.BOOTSTRAP_CSS_PATH);
 			out.println("<title>Servlet HelloWorld</title>");
 			out.println("</head>");
 			out.println("<body>");

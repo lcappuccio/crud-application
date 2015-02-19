@@ -16,6 +16,14 @@
         <servlet-name>ListEmployees</servlet-name>
         <servlet-class>org.systemexception.crudapplication.servlet.ListEmployees</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RandomEmployee</servlet-name>
+        <servlet-class>org.systemexception.crudapplication.servlet.RandomEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeesJson</servlet-name>
+        <servlet-class>org.systemexception.crudapplication.servlet.EmployeesJson</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/HelloWorld</url-pattern>
@@ -32,9 +40,17 @@
         <servlet-name>ListEmployees</servlet-name>
         <url-pattern>/ListEmployees</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RandomEmployee</servlet-name>
+        <url-pattern>/RandomEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeesJson</servlet-name>
+        <url-pattern>/EmployeesJson</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
-        </session-timeout>
+			30
+		</session-timeout>
     </session-config>
 </web-app>

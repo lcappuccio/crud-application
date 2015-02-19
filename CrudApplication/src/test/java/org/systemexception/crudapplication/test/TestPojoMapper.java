@@ -3,8 +3,10 @@ package org.systemexception.crudapplication.test;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.systemexception.crudapplication.exception.PojoMapperException;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.PojoMapper;
 
 /**
@@ -14,26 +16,33 @@ import org.systemexception.crudapplication.pojo.PojoMapper;
  */
 public class TestPojoMapper {
 
-	Employee emp;
+	Employee emp1, emp2, emp3;
+	Employees employees;
 	EmployeeDaoImpl empDao = new EmployeeDaoImpl();
 	PojoMapper sut = new PojoMapper();
 
 	@Before
 	public void setUp() {
-		emp = empDao.findById(1);
+		emp1 = empDao.findById(1);
+		emp2 = empDao.findById(2);
+		emp3 = empDao.findById(3);
+		employees = new Employees();
 	}
 
 	@Test
-	public void testEmpToJson() {
-		// TODO refactor PojoMapper to return a specific set of Employee attributes
-		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\",\"empIdString\":\"1\"}".equals(sut.empToJson(emp)));
+	public void testEmpToJson() throws PojoMapperException {
+		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.empToJson(emp1)));
 	}
 
 	@Test
-	public void testJsonToEmp() {
-		emp = empDao.findById(1);
+	public void testJsonToEmp() throws PojoMapperException {
+		emp1 = empDao.findById(1);
 		Employee empJson = sut.jsonToEmp("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
-		assertTrue(emp.equals(empJson));
+		assertTrue(emp1.equals(empJson));
 	}
 
+	@Test
+	public void testEmployeesToJson() throws PojoMapperException {
+		System.out.println(sut.employeesToJson(employees));
+	}
 }

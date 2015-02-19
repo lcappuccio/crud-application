@@ -5,7 +5,7 @@ package org.systemexception.crudapplication.pojo;
  * @author leo
  * @date Feb 18, 2015 12:24:00 AM
  */
-public class Employee {
+public final class Employee {
 
 	private int empId;
 	private String empName, empSurname;
@@ -26,10 +26,6 @@ public class Employee {
 
 	public int getEmpId() {
 		return empId;
-	}
-
-	public String getEmpIdString() {
-		return String.valueOf(empId);
 	}
 
 	public void setEmpId(int empId) {

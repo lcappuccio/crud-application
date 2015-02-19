@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.pojo.Employee;
 
@@ -17,16 +19,16 @@ import org.systemexception.crudapplication.pojo.Employee;
  */
 public class EmployeeDaoImpl implements EmployeeDao {
 
+	private static final Logger LOG = Logger.getLogger(EmployeeDaoImpl.class.getCanonicalName());
 	private final HikariDataSource dataSource = new HikariDataSource();
 	private Connection conn;
 
 	private Connection getConnection() throws SQLException {
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		// TODO IP address, schema, user and password should be in external
-		// properties
-//		 for testing use ("jdbc:mysql://192.168.1.3:3306/test");
+		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+		// TODO IP address, schema, user and password should be in external properties
+		// for testing use ("jdbc:mysql://192.168.1.3:3306/test");
 		// for production use ("jdbc:mysql://localhost:3306/test");
-		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.3:3306/test");
+		dataSource.setJdbcUrl("jdbc:mariadb://192.168.1.3:3306/test");
 		dataSource.setUsername("test");
 		dataSource.setPassword("test");
 		dataSource.setConnectionTimeout(5000);
@@ -39,7 +41,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public Employee findById(int empId) {
-		Connection conn = null;
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		Employee emp = new Employee();
@@ -56,7 +57,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				emp.setEmpSurname(rs.getString("EMPLOYEE_SURNAME"));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		} finally {
 			closeAll(conn, pss, rs);
 		}
@@ -65,7 +66,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		Connection conn = null;
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		List<Employee> empList = new ArrayList<Employee>();
@@ -82,7 +82,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				empList.add(emp);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		} finally {
 			closeAll(conn, pss, rs);
 		}
@@ -91,7 +91,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public List<Employee> findByName(String empName) {
-		Connection conn = null;
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		List<Employee> empList = new ArrayList<Employee>();
@@ -111,7 +110,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				empList.add(emp);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		} finally {
 			closeAll(conn, pss, rs);
 		}
@@ -120,7 +119,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public int countEmployees() {
-		Connection conn = null;
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		int empCount = 0;
@@ -133,7 +131,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				empCount = rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		} finally {
 			closeAll(conn, pss, rs);
 		}
@@ -143,7 +141,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public boolean insertEmployee(Employee emp) {
 		boolean operationResult = false;
-		Connection conn = null;
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		int maxEmpId = 0;
@@ -169,7 +166,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				conn.commit();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		} finally {
 			closeAll(conn, pss, rs);
 		}
@@ -178,7 +175,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	public boolean insertEmployeeWithId(Employee emp) {
 		boolean operationResult = false;
-		Connection conn = null;
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		try {
@@ -195,7 +191,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				conn.commit();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		} finally {
 			closeAll(conn, pss, rs);
 		}
@@ -205,7 +201,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public boolean deleteEmployee(Employee emp) {
 		boolean operationResult = false;
-		Connection conn = null;
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		try {
@@ -219,7 +214,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				conn.commit();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		} finally {
 			closeAll(conn, pss, rs);
 		}
@@ -238,7 +233,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				conn.close();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			exceptionHandler(e);
 		}
+	}
+
+	private void exceptionHandler(SQLException e) {
+		LOG.log(Level.SEVERE, "Error in DAO\n{0}", e);
 	}
 }

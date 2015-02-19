@@ -2,6 +2,7 @@ package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -32,9 +34,16 @@ public class InsertEmployee extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
 		try {
-			out.println("<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">");
-			out.println("<h1>Insert Employee Data</h1>");
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println(Util.BOOTSTRAP_CSS_PATH);
+			out.println("<title>Insert Employee</title>");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<h1>Insert Employee</h1>");
 			out.println("<form class=\"form-inline\" action=\"InsertEmployee\" method=\"POST\">");
 
 			out.println("<div class=\"form-group\">"
@@ -49,6 +58,8 @@ public class InsertEmployee extends HttpServlet {
 
 			out.println("</form>");
 			out.println("<hr>");
+			out.println("</body>");
+			out.println("</html>");
 		} finally {
 			out.close();
 		}
@@ -86,6 +97,7 @@ public class InsertEmployee extends HttpServlet {
 		emp = new Employee(empName, empSurname);
 		empDao.insertEmployee(emp);
 		processRequest(request, response);
+		LOG.log(Level.INFO, "Insert employee: {0}, {1}", new Object[]{empName, empSurname});
 	}
 
 	/**

@@ -8,16 +8,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.exception.PojoMapperException;
 import org.systemexception.crudapplication.pojo.Employees;
+import org.systemexception.crudapplication.pojo.PojoMapper;
 import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
  * @author leo
+ * @date 19/02/2015 23:04
  */
-public class ListEmployees extends HttpServlet {
+public class EmployeesJson extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(ListEmployees.class.getCanonicalName());
+	private static final Logger LOG = Logger.getLogger(EmployeesJson.class.getCanonicalName());
+	private final PojoMapper pojoMapper = new PojoMapper();
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -26,33 +30,25 @@ public class ListEmployees extends HttpServlet {
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
+	 * @throws org.systemexception.crudapplication.exception.PojoMapperException
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, PojoMapperException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		Employees employees = new Employees();
+		Employees emp = new Employees();
+		String empJson = pojoMapper.employeesToJson(emp);
 		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
+		LOG.log(Level.INFO, "retrieved {0} employees", emp.countEmployees());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
 			out.println(Util.BOOTSTRAP_CSS_PATH);
-			out.println("<title>Employee List</title>");
+			out.println("<title>Servlet EmployeesJson</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println("<h1>List Employees</h1>");
-			// Start printing table
-			out.println("<table class=\"table table-hover\">");
-			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
-			for (int i = 0; i < employees.countEmployees(); i++) {
-				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
-				String empName = employees.getEmpList().get(i).getEmpName();
-				String empLastName = employees.getEmpList().get(i).getEmpSurname();
-				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td></tr>");
-			}
-			out.println("</table>");
-			out.println("<hr>");
+			out.println(empJson);
 			out.println("</body>");
 			out.println("</html>");
 		} finally {
@@ -72,7 +68,11 @@ public class ListEmployees extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		processRequest(request, response);
+		try {
+			processRequest(request, response);
+		} catch (PojoMapperException ex) {
+			Logger.getLogger(EmployeesJson.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 
 	/**
@@ -86,7 +86,11 @@ public class ListEmployees extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		processRequest(request, response);
+		try {
+			processRequest(request, response);
+		} catch (PojoMapperException ex) {
+			Logger.getLogger(EmployeesJson.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 
 	/**

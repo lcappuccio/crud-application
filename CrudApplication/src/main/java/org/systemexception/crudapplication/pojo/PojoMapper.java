@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.systemexception.crudapplication.exception.PojoMapperException;
 
 /**
  *
@@ -14,21 +15,27 @@ public class PojoMapper {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 
-	public String empToJson(Employee emp) {
+	public String empToJson(Employee emp) throws PojoMapperException {
 		try {
 			return objectMapper.writeValueAsString(emp);
 		} catch (IOException e) {
-			System.out.println(exceptionToString(e));
-			return "";
+			throw new PojoMapperException(exceptionToString(e));
 		}
 	}
 
-	public Employee jsonToEmp(String json) {
+	public Employee jsonToEmp(String json) throws PojoMapperException {
 		try {
 			return objectMapper.readValue(json, Employee.class);
 		} catch (IOException e) {
-			System.out.println(exceptionToString(e));
-			return new Employee();
+			throw new PojoMapperException(exceptionToString(e));
+		}
+	}
+
+	public String employeesToJson(Employees employees) throws PojoMapperException {
+		try {
+			return objectMapper.writeValueAsString(employees);
+		} catch (IOException e) {
+			throw new PojoMapperException(exceptionToString(e));
 		}
 	}
 
