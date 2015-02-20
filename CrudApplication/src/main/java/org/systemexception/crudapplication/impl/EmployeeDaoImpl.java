@@ -180,32 +180,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return operationResult;
 	}
 
-	// TODO this should be moved to a test package
-	public boolean insertEmployeeWithId(Employee emp) {
-		boolean operationResult = false;
-		PreparedStatement pss = null;
-		ResultSet rs = null;
-		try {
-			conn = getConnection();
-			pss = conn.prepareStatement(
-					"insert into EMPLOYEES (EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME) values (?,?,?)",
-					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			pss.setInt(1, emp.getEmpId());
-			pss.setString(2, emp.getEmpName());
-			pss.setString(3, emp.getEmpSurname());
-			int countRows = pss.executeUpdate();
-			if (countRows > 0) {
-				operationResult = true;
-				conn.commit();
-			}
-		} catch (SQLException e) {
-			exceptionHandler(e);
-		} finally {
-			closeAll(conn, pss, rs);
-		}
-		return operationResult;
-	}
-
 	@Override
 	public boolean deleteEmployee(Employee emp) {
 		boolean operationResult = false;

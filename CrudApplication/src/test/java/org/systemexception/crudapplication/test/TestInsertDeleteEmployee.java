@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.test.impl.TestEmployeeDaoImpl;
 
 /**
  *
@@ -14,12 +15,12 @@ import org.systemexception.crudapplication.pojo.Employee;
  */
 public class TestInsertDeleteEmployee {
 
-	EmployeeDaoImpl empDao;
+	TestEmployeeDaoImpl empDao;
 	Employee emp;
 
 	@Before
 	public void setUp() {
-		empDao = new EmployeeDaoImpl();
+		empDao = new TestEmployeeDaoImpl();
 		emp = new Employee(999, "Test", "Test");
 	}
 
