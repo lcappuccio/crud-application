@@ -20,6 +20,7 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class EmployeesJson extends HttpServlet {
 
+	private static final long serialVersionUID = 8069911911112010811L;
 	private static final Logger LOG = Logger.getLogger(EmployeesJson.class.getCanonicalName());
 	private final PojoMapper pojoMapper = new PojoMapper();
 

@@ -17,6 +17,7 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class BadWorld extends HttpServlet {
 
+	private static final long serialVersionUID = -7457917008623060783L;
 	private static final Logger LOG = Logger.getLogger(BadWorld.class.getCanonicalName());
 
 	/**

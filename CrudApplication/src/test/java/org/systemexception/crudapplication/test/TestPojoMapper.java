@@ -3,6 +3,7 @@ package org.systemexception.crudapplication.test;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.exception.PojoMapperException;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
@@ -18,7 +19,7 @@ public class TestPojoMapper {
 
 	Employee emp1, emp2, emp3;
 	Employees employees;
-	EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+	EmployeeDao empDao = new EmployeeDaoImpl();
 	PojoMapper sut = new PojoMapper();
 
 	@Before
@@ -31,13 +32,13 @@ public class TestPojoMapper {
 
 	@Test
 	public void testEmpToJson() throws PojoMapperException {
-		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.empToJson(emp1)));
+		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.employeeToJson(emp1)));
 	}
 
 	@Test
 	public void testJsonToEmp() throws PojoMapperException {
 		emp1 = empDao.findById(1);
-		Employee empJson = sut.jsonToEmp("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
+		Employee empJson = sut.jsonToEmployee("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
 		assertTrue(emp1.equals(empJson));
 	}
 

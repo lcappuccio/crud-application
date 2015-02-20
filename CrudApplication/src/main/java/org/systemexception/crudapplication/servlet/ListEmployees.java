@@ -17,6 +17,7 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class ListEmployees extends HttpServlet {
 
+	private static final long serialVersionUID = -5033816012389264380L;
 	private static final Logger LOG = Logger.getLogger(ListEmployees.class.getCanonicalName());
 
 	/**

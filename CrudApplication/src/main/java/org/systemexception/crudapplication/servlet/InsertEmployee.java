@@ -18,6 +18,7 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class InsertEmployee extends HttpServlet {
 
+	private static final long serialVersionUID = 3349045542810157960L;
 	private static final Logger LOG = Logger.getLogger(InsertEmployee.class.getCanonicalName());
 	private final EmployeeDaoImpl empDao = new EmployeeDaoImpl();
 	private Employee emp;

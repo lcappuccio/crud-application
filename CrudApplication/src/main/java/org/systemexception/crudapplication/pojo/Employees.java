@@ -52,10 +52,7 @@ public class Employees {
 		if (this.empList != other.empList && (this.empList == null || !this.empList.equals(other.empList))) {
 			return false;
 		}
-		if (this.empDao != other.empDao && (this.empDao == null || !this.empDao.equals(other.empDao))) {
-			return false;
-		}
-		return true;
+		return !(this.empDao != other.empDao && (this.empDao == null || !this.empDao.equals(other.empDao)));
 	}
 
 }
