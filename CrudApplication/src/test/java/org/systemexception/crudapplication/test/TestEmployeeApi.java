@@ -2,6 +2,7 @@ package org.systemexception.crudapplication.test;
 
 import static junit.framework.Assert.assertTrue;
 import org.junit.Test;
+import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 
 /**
@@ -11,7 +12,7 @@ import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
  */
 public class TestEmployeeApi {
 
-	EmployeeDaoImpl sut = new EmployeeDaoImpl();
+	EmployeeDao sut = new EmployeeDaoImpl();
 
 	@Test
 	public void testGetHomer() {
