@@ -15,7 +15,7 @@ public class PojoMapper {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 
-	public String empToJson(Employee emp) throws PojoMapperException {
+	public String employeeToJson(Employee emp) throws PojoMapperException {
 		try {
 			return objectMapper.writeValueAsString(emp);
 		} catch (IOException e) {
@@ -23,7 +23,7 @@ public class PojoMapper {
 		}
 	}
 
-	public Employee jsonToEmp(String json) throws PojoMapperException {
+	public Employee jsonToEmployee(String json) throws PojoMapperException {
 		try {
 			return objectMapper.readValue(json, Employee.class);
 		} catch (IOException e) {

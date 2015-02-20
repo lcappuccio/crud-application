@@ -32,13 +32,13 @@ public class TestPojoMapper {
 
 	@Test
 	public void testEmpToJson() throws PojoMapperException {
-		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.empToJson(emp1)));
+		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.employeeToJson(emp1)));
 	}
 
 	@Test
 	public void testJsonToEmp() throws PojoMapperException {
 		emp1 = empDao.findById(1);
-		Employee empJson = sut.jsonToEmp("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
+		Employee empJson = sut.jsonToEmployee("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
 		assertTrue(emp1.equals(empJson));
 	}
 
