@@ -15,6 +15,13 @@ public class PojoMapper {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 
+	/**
+	 * Returns a JSON string representation of an employee
+	 *
+	 * @param emp
+	 * @return
+	 * @throws PojoMapperException
+	 */
 	public String employeeToJson(Employee emp) throws PojoMapperException {
 		try {
 			return objectMapper.writeValueAsString(emp);
@@ -23,6 +30,13 @@ public class PojoMapper {
 		}
 	}
 
+	/**
+	 * Returns an employee object given an employee JSON representation
+	 *
+	 * @param json
+	 * @return
+	 * @throws PojoMapperException
+	 */
 	public Employee jsonToEmployee(String json) throws PojoMapperException {
 		try {
 			return objectMapper.readValue(json, Employee.class);
@@ -31,6 +45,13 @@ public class PojoMapper {
 		}
 	}
 
+	/**
+	 * Returns a JSON string representation of an employee list
+	 *
+	 * @param employees
+	 * @return
+	 * @throws PojoMapperException
+	 */
 	public String employeesToJson(Employees employees) throws PojoMapperException {
 		try {
 			return objectMapper.writeValueAsString(employees);

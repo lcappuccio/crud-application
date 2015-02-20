@@ -1,5 +1,7 @@
 package org.systemexception.crudapplication.pojo;
 
+import java.util.Locale;
+
 /**
  *
  * @author leo
@@ -8,5 +10,7 @@ package org.systemexception.crudapplication.pojo;
 public class Util {
 
 	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">";
+
+	public static final Locale LOCALE = Locale.getDefault();
 
 }

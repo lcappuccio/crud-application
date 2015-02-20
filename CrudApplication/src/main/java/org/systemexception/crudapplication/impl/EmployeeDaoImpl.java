@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -23,6 +24,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	private final HikariDataSource dataSource = new HikariDataSource();
 	private Connection conn;
 
+	/**
+	 * Returns a connection type
+	 *
+	 * @return
+	 * @throws SQLException
+	 */
 	private Connection getConnection() throws SQLException {
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
 		// TODO IP address, schema, user and password should be in external properties
@@ -100,7 +107,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 					.prepareStatement(
 							"select EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME from EMPLOYEES where lower(EMPLOYEE_NAME) LIKE ?",
 							ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			pss.setString(1, "%" + empName.toLowerCase() + "%");
+			pss.setString(1, "%" + empName.toLowerCase(Util.LOCALE) + "%");
 			rs = pss.executeQuery();
 			while (rs.next()) {
 				Employee emp = new Employee();
@@ -173,6 +180,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return operationResult;
 	}
 
+	// TODO this should be moved to a test package
 	public boolean insertEmployeeWithId(Employee emp) {
 		boolean operationResult = false;
 		PreparedStatement pss = null;
@@ -221,6 +229,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return operationResult;
 	}
 
+	/**
+	 * Quietly close all database resources
+	 *
+	 * @param conn
+	 * @param pss
+	 * @param rs
+	 */
 	private void closeAll(Connection conn, PreparedStatement pss, ResultSet rs) {
 		try {
 			if (rs != null) {
@@ -237,6 +252,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 
+	/**
+	 * Exception handler to log file
+	 *
+	 * @param e
+	 */
 	private void exceptionHandler(SQLException e) {
 		LOG.log(Level.SEVERE, "Error in DAO\n{0}", e);
 	}

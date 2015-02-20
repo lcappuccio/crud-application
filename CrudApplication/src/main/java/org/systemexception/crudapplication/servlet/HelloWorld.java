@@ -16,6 +16,7 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class HelloWorld extends HttpServlet {
 
+	private static final long serialVersionUID = -9080282518036683272L;
 	private static final Logger LOG = Logger.getLogger(HelloWorld.class.getCanonicalName());
 
 	/**
