@@ -33,16 +33,12 @@ public class ListEmployees extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
-		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
+		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
+		LOG.log(Level.INFO, "retrieved {0} employees", employees.countEmployees());
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
-			out.println(Util.BOOTSTRAP_CSS_PATH);
-			out.println("<title>Employee List</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>List Employees</h1>");
+			out.println(Util.PAGE_HEADER);
+			out.println("<div class=\"container\">");
+			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
 			out.println("<table class=\"table table-hover\">");
 			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
@@ -53,9 +49,8 @@ public class ListEmployees extends HttpServlet {
 				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td></tr>");
 			}
 			out.println("</table>");
-			out.println("<hr>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("</div>");
+			out.println(Util.PAGE_END);
 		} finally {
 			out.close();
 		}

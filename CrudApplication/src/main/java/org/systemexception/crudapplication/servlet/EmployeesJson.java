@@ -37,19 +37,18 @@ public class EmployeesJson extends HttpServlet {
 			throws ServletException, IOException, PojoMapperException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		Employees emp = new Employees();
-		String empJson = pojoMapper.employeesToJson(emp);
-		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
-		LOG.log(Level.INFO, "retrieved {0} employees", emp.countEmployees());
+		Employees employees = new Employees();
+		String employeesJson = pojoMapper.employeesToJson(employees);
+		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
+		LOG.log(Level.INFO, "retrieved {0} employees", employees.countEmployees());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
-			out.println(Util.BOOTSTRAP_CSS_PATH);
 			out.println("<title>Servlet EmployeesJson</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println(empJson);
+			out.println(employeesJson);
 			out.println("</body>");
 			out.println("</html>");
 		} finally {
