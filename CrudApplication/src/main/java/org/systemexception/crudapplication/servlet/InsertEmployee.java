@@ -37,15 +37,9 @@ public class InsertEmployee extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
-			out.println(Util.BOOTSTRAP_CSS_PATH);
-			out.println(Util.FAVICON_PATH);
-			out.println("<title>Insert Employee</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>Insert Employee</h1>");
+			out.println(Util.PAGE_HEADER);
+			out.println("<div class=\"container\">");
+			out.println("<h2>Insert New Employee</h2><hr>");
 			out.println("<form class=\"form-inline\" action=\"InsertEmployee\" method=\"POST\">");
 
 			out.println("<div class=\"form-group\">"
@@ -59,9 +53,8 @@ public class InsertEmployee extends HttpServlet {
 			out.println("<button type=\"submit\" class=\"btn btn-default\">Submit</button>");
 
 			out.println("</form>");
-			out.println("<hr>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("</div>");
+			out.println(Util.PAGE_END);
 		} finally {
 			out.close();
 		}

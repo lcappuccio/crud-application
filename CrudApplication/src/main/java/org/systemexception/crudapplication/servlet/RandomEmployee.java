@@ -37,23 +37,16 @@ public class RandomEmployee extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
-			out.println(Util.BOOTSTRAP_CSS_PATH);
-			out.println(Util.FAVICON_PATH);
-			out.println("<title>Employee List</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>Random Springfield Nuclear Plant Employee</h1>");
+			out.println(Util.PAGE_HEADER);
+			out.println("<div class=\"container\">");
+			out.println("<h2>Random Employee</h2><hr>");
 			// Fetch random Employee details
 			Random random = new Random();
 			int randomId = random.nextInt(empDao.countEmployees());
-			Employee emp = empDao.findById(randomId);
-			out.println("Employee: " + emp.getEmpName() + " " + emp.getEmpSurname());
-			out.println("<hr>");
-			out.println("</body>");
-			out.println("</html>");
+			Employee employee = empDao.findById(randomId);
+			out.println("Employee: " + employee.getEmpName() + " " + employee.getEmpSurname());
+			out.println("</div>");
+			out.println(Util.PAGE_END);
 		} finally {
 			out.close();
 		}
