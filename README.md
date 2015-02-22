@@ -1,4 +1,4 @@
-# CrudApplication ![Travis build status](https://travis-ci.org/lcappuccio/CrudApplication.svg?branch=master)
+# CrudApplication 
 A basic crud application example
 
 ## Installation
