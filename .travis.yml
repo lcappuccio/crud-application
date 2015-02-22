@@ -1,7 +1,7 @@
 language: java
 jdk:
   - oraclejdk8
-script: cd CrudApplication && mvn clean install & mvn test
+script: cd CrudApplication && mvn clean install && mvn test
 
 # whitelist
 branches:
