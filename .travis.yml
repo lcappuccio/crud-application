@@ -3,7 +3,12 @@ jdk:
   - oraclejdk8
 script: cd CrudApplication && mvn clean install && mvn test
 
-# whitelist
+# whitelist for builds
 branches:
   only:
     - master
+
+# blacklist for builds
+branches:
+  except:
+    - develop
