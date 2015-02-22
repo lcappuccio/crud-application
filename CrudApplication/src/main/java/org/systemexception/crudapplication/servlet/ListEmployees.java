@@ -33,7 +33,7 @@ public class ListEmployees extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
-		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
+		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");

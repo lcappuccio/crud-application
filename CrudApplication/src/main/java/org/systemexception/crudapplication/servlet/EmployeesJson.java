@@ -39,7 +39,7 @@ public class EmployeesJson extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Employees emp = new Employees();
 		String empJson = pojoMapper.employeesToJson(emp);
-		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
+		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
 		LOG.log(Level.INFO, "retrieved {0} employees", emp.countEmployees());
 		try {
 			out.println("<!DOCTYPE html>");

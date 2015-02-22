@@ -34,7 +34,7 @@ public class BadWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
-		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
+		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
