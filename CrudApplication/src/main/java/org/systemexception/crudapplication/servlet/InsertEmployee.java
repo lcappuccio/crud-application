@@ -41,6 +41,7 @@ public class InsertEmployee extends HttpServlet {
 			out.println("<html>");
 			out.println("<head>");
 			out.println(Util.BOOTSTRAP_CSS_PATH);
+			out.println(Util.FAVICON_PATH);
 			out.println("<title>Insert Employee</title>");
 			out.println("</head>");
 			out.println("<body>");

@@ -37,6 +37,7 @@ public class HelloWorld extends HttpServlet {
 			out.println("<html>");
 			out.println("<head>");
 			out.println(Util.BOOTSTRAP_CSS_PATH);
+			out.println(Util.FAVICON_PATH);
 			out.println("<title>Servlet HelloWorld</title>");
 			out.println("</head>");
 			out.println("<body>");

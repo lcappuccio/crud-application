@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="icon" type="image/png" sizes="96x96" href="resources/images/favicon.png">
         <title>JSP Page</title>
     </head>
     <body>

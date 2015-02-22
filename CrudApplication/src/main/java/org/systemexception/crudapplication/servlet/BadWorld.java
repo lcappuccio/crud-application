@@ -40,6 +40,7 @@ public class BadWorld extends HttpServlet {
 			out.println("<html>");
 			out.println("<head>");
 			out.println(Util.BOOTSTRAP_CSS_PATH);
+			out.println(Util.FAVICON_PATH);
 			out.println("<title>Servlet BadWorld</title>");
 			out.println("</head>");
 			out.println("<body>");
