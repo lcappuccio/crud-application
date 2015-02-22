@@ -31,18 +31,14 @@ public class HelloWorld extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
+		LOG.log(Level.INFO, "request to {0}", this.getClass().getCanonicalName());
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
-			out.println(Util.BOOTSTRAP_CSS_PATH);
-			out.println("<title>Servlet HelloWorld</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>Servlet HelloWorld at " + request.getContextPath() + "</h1>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println(Util.PAGE_HEADER);
+			out.println("<div class=\"container\">");
+			out.println("<h2>Servlet HelloWorld at " + request.getContextPath() + "</h2><hr>");
+			out.println("Your IP: " + request.getRemoteAddr());
+			out.println("</div>");
+			out.println(Util.PAGE_END);
 		} finally {
 			out.close();
 		}

@@ -12,4 +12,5 @@ Available servlets:
 * HelloWorld: pretty explicative
 * RandomEmployee: **d**isplays a random employee
 * ListEmployees: **d**isplays a table with all employees in the database
+* EmployeesJson: **d**isplays the full employee list in a JSON
 * InsertEmployee: **c**reate an employee

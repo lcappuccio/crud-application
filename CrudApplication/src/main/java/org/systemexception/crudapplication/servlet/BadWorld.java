@@ -34,20 +34,14 @@ public class BadWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
-		LOG.log(Level.INFO, "logged call to {0}", this.getClass().getCanonicalName());
+		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
 		try {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
-			out.println(Util.BOOTSTRAP_CSS_PATH);
-			out.println("<title>Servlet BadWorld</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<h1>Bad World!</h1>");
+			out.println(Util.PAGE_HEADER);
+			out.println("<div class=\"container\">");
+			out.println("<h2>Bad World!</h2><hr>");
 			out.println("Guess this: " + rndStr);
-			out.println("<hr>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("</div>");
+			out.println(Util.PAGE_END);
 		} finally {
 			out.close();
 		}
