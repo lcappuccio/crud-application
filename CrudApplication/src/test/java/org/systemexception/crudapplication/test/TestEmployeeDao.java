@@ -3,7 +3,6 @@ package org.systemexception.crudapplication.test;
 import static junit.framework.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.test.impl.TestEmployeeDaoImpl;
@@ -56,4 +55,8 @@ public class TestEmployeeDao {
 		assertTrue(sut.deleteEmployee(emp));
 	}
 
+	@Test
+	public void test_bad_query() {
+		assertTrue(sut.testBadQuery());
+	}
 }

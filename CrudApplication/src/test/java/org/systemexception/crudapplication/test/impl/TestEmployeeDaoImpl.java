@@ -7,6 +7,8 @@
 package org.systemexception.crudapplication.test.impl;
 
 import com.zaxxer.hikari.HikariDataSource;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -73,6 +75,30 @@ public class TestEmployeeDaoImpl extends EmployeeDaoImpl {
 	}
 
 	/**
+	 * Test that exception handler
+	 *
+	 * @return
+	 */
+	public boolean testBadQuery() {
+		PreparedStatement pss = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pss = conn.prepareStatement(
+					"terribly wrong query",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			rs = pss.executeQuery();
+			int countRows = pss.executeUpdate();
+		} catch (SQLException e) {
+			exceptionHandler(e);
+			return (true);
+		} finally {
+			closeAll(conn, pss, rs);
+		}
+		return (false);
+	}
+
+	/**
 	 * Quietly close all database resources
 	 *
 	 * @param conn
@@ -98,9 +124,12 @@ public class TestEmployeeDaoImpl extends EmployeeDaoImpl {
 	/**
 	 * Exception handler to log file
 	 *
-	 * @param e
+	 * @param exception
 	 */
-	private void exceptionHandler(SQLException e) {
-		LOG.log(Level.SEVERE, "Error in DAO\n{0}", e);
+	private void exceptionHandler(SQLException exception) {
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		exception.printStackTrace(pw);
+		LOG.log(Level.SEVERE, "Error in DAO\n{0}", sw.toString());
 	}
 }
