@@ -1,8 +1,8 @@
 package org.systemexception.crudapplication.pojo;
 
+import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
-import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 
 /**
  *
