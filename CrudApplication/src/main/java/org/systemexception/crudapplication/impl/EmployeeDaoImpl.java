@@ -1,8 +1,6 @@
 package org.systemexception.crudapplication.impl;
 
 import com.zaxxer.hikari.HikariDataSource;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -231,12 +229,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	/**
 	 * Exception handler to log file
 	 *
-	 * @param exception
+	 * @param e
 	 */
-	private void exceptionHandler(SQLException exception) {
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		exception.printStackTrace(pw);
-		LOG.log(Level.SEVERE, "Error in DAO\n{0}", sw.toString());
+	private void exceptionHandler(SQLException e) {
+		LOG.log(Level.SEVERE, "Error in DAO\n{0}", e);
 	}
 }
