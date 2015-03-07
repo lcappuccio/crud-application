@@ -10,7 +10,8 @@ A basic crud application example
 Available servlets:
 * BadWorld: just generates a bunch of random hex codes
 * HelloWorld: pretty explicative
+* InsertEmployee: **c**reate an employee
 * RandomEmployee: **r**eads a random employee
 * ListEmployees: **r**eads a table with all employees in the database
 * EmployeesJson: **r**eads the full employee list in a JSON
-* InsertEmployee: **c**reate an employee
+* DeleteEmployee: **d**elete an employee
