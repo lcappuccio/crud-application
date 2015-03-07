@@ -3,6 +3,7 @@ package org.systemexception.crudapplication.pojo;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
+import org.systemexception.crudapplication.api.EmployeeDao;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.List;
 public class Employees {
 
 	private List<Employee> empList = new ArrayList<Employee>();
-	private final EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
 	public Employees() {
 		empList.clear();

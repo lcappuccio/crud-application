@@ -1,3 +1,25 @@
+/**
+ *
+ * @author leo
+ * @date 07/03/2015 20:26
+ *
+ */
+/*
+ * Copyright (C) 2015 leo
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package org.systemexception.crudapplication.servlet;
 
 import java.io.IOException;
@@ -9,20 +31,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.systemexception.crudapplication.api.EmployeeDao;
-import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.Util;
 
-/**
- *
- * @author leo
- */
-public class InsertEmployee extends HttpServlet {
+public class DeleteEmployee extends HttpServlet {
 
-	private static final long serialVersionUID = 3349045542810157960L;
-	private static final Logger LOG = Logger.getLogger(InsertEmployee.class.getCanonicalName());
+	private static final long serialVersionUID = -686520693341461360L;
+	private static final Logger LOG = Logger.getLogger(DeleteEmployee.class.getCanonicalName());
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
-	private Employee emp;
+
+	/**
+	 * Returns a delete button with values to post
+	 *
+	 * @param empID
+	 * @return
+	 */
+	private String getDeleteEmployeeButton(String empID) {
+		return "<button type=\"submit\" class=\"btn btn-default\" "
+				+ "name=\"empID\" value=\"" + empID + "\"" + ">Delete</button>";
+	}
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,23 +65,25 @@ public class InsertEmployee extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		Employees employees = new Employees();
 		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
+		LOG.log(Level.INFO, "retrieved {0} employees", employees.countEmployees());
 		try {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");
-			out.println("<h2>Insert New Employee</h2><hr>");
-			out.println("<form class=\"form-insert\" action=\"InsertEmployee\" method=\"POST\">");
-
-			out.println("<div class=\"form-group\">"
-					+ "<label class=\"sr-only\" for=\"employeeName\">Name</label>"
-					+ "<input type=\"text\" class=\"form-control\" id=\"employeeName\" placeholder=\"Enter employee name\" name=\"employeeName\"></div>");
-
-			out.println("<div class=\"form-group\">"
-					+ "<label class=\"sr-only\" for=\"employeeSurname\">Surname</label>"
-					+ "<input type=\"text\" class=\"form-control\" id=\"employeeSurname\" placeholder=\"Enter employee name\" name=\"employeeSurname\"></div>");
-
-			out.println("<button type=\"submit\" class=\"btn btn-default\">Submit</button>");
-
+			out.println("<h2>List Employees</h2><hr>");
+			// Start printing table
+			out.println("<form class=\"form-delete\" action=\"DeleteEmployee\" method=\"POST\">");
+			out.println("<table class=\"table table-hover\">");
+			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th><th></th></tr>");
+			for (int i = 0; i < employees.countEmployees(); i++) {
+				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
+				String empName = employees.getEmpList().get(i).getEmpName();
+				String empLastName = employees.getEmpList().get(i).getEmpSurname();
+				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td>"
+						+ "<td>" + getDeleteEmployeeButton(empID) + "</td></tr>");
+			}
+			out.println("</table>");
 			out.println("</form>");
 			out.println("</div>");
 			out.println(Util.PAGE_END);
@@ -87,13 +118,12 @@ public class InsertEmployee extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String empName = request.getParameter("employeeName");
-		String empSurname = request.getParameter("employeeSurname");
-		emp = new Employee(empName, empSurname);
-		empDao.insertEmployee(emp);
+		String empID = request.getParameter("empID");
+		Employee employee = new Employee((Integer.valueOf(empID)), null, null);
+		empDao.deleteEmployee(employee);
 		processRequest(request, response);
-		LOG.log(Level.INFO, "Insert employee: {0}, {1}, remote IP: {2}", new Object[]{empName, empSurname, request.getRemoteAddr()});
+		LOG.log(Level.INFO, "Request delete for empID: {0}", empID);
+
 	}
 
 	/**
