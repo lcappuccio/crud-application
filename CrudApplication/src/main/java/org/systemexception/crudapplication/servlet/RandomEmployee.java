@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Util;
@@ -21,7 +22,7 @@ public class RandomEmployee extends HttpServlet {
 
 	private static final long serialVersionUID = 6868657037250314501L;
 	private static final Logger LOG = Logger.getLogger(RandomEmployee.class.getCanonicalName());
-	private final EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

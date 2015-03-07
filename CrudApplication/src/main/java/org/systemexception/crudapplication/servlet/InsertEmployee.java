@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Util;
@@ -20,7 +21,7 @@ public class InsertEmployee extends HttpServlet {
 
 	private static final long serialVersionUID = 3349045542810157960L;
 	private static final Logger LOG = Logger.getLogger(InsertEmployee.class.getCanonicalName());
-	private final EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+	private final EmployeeDao empDao = new EmployeeDaoImpl();
 	private Employee emp;
 
 	/**
@@ -40,7 +41,7 @@ public class InsertEmployee extends HttpServlet {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Insert New Employee</h2><hr>");
-			out.println("<form class=\"form-inline\" action=\"InsertEmployee\" method=\"POST\">");
+			out.println("<form class=\"form-insert\" action=\"InsertEmployee\" method=\"POST\">");
 
 			out.println("<div class=\"form-group\">"
 					+ "<label class=\"sr-only\" for=\"employeeName\">Name</label>"
