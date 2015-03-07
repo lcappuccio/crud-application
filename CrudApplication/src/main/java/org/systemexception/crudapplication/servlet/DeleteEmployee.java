@@ -42,6 +42,12 @@ public class DeleteEmployee extends HttpServlet {
 	private static final Logger LOG = Logger.getLogger(DeleteEmployee.class.getCanonicalName());
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
+	/**
+	 * Returns a delete button with values to post
+	 *
+	 * @param empID
+	 * @return
+	 */
 	private String getDeleteEmployeeButton(String empID) {
 		return "<button type=\"submit\" class=\"btn btn-default\" "
 				+ "name=\"empID\" value=\"" + empID + "\"" + ">Delete</button>";
