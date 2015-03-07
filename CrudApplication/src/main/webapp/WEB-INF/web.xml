@@ -24,6 +24,10 @@
 		<servlet-name>EmployeesJson</servlet-name>
 		<servlet-class>org.systemexception.crudapplication.servlet.EmployeesJson</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DeleteEmployee</servlet-name>
+		<servlet-class>org.systemexception.crudapplication.servlet.DeleteEmployee</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>HelloWorld</servlet-name>
 		<url-pattern>/HelloWorld</url-pattern>
@@ -47,6 +51,10 @@
 	<servlet-mapping>
 		<servlet-name>EmployeesJson</servlet-name>
 		<url-pattern>/EmployeesJson</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteEmployee</servlet-name>
+		<url-pattern>/DeleteEmployee</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>
