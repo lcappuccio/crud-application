@@ -30,6 +30,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.systemexception.crudapplication.api.EmployeeDao;
+import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.Util;
 
@@ -37,6 +40,12 @@ public class DeleteEmployee extends HttpServlet {
 
 	private static final long serialVersionUID = -686520693341461360L;
 	private static final Logger LOG = Logger.getLogger(DeleteEmployee.class.getCanonicalName());
+	private final EmployeeDao empDao = new EmployeeDaoImpl();
+
+	private String getDeleteEmployeeButton(String empID) {
+		return "<button type=\"submit\" class=\"btn btn-default\" "
+				+ "name=\"empID\" value=\"" + empID + "\"" + ">Delete</button>";
+	}
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -58,6 +67,7 @@ public class DeleteEmployee extends HttpServlet {
 			out.println("<div class=\"container\">");
 			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
+			out.println("<form class=\"form-delete\" action=\"DeleteEmployee\" method=\"POST\">");
 			out.println("<table class=\"table table-hover\">");
 			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th><th></th></tr>");
 			for (int i = 0; i < employees.countEmployees(); i++) {
@@ -65,9 +75,10 @@ public class DeleteEmployee extends HttpServlet {
 				String empName = employees.getEmpList().get(i).getEmpName();
 				String empLastName = employees.getEmpList().get(i).getEmpSurname();
 				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td>"
-						+ "<td><button type=\"button\" class=\"btn btn-default\">Delete</button></td></tr>");
+						+ "<td>" + getDeleteEmployeeButton(empID) + "</td></tr>");
 			}
 			out.println("</table>");
+			out.println("</form>");
 			out.println("</div>");
 			out.println(Util.PAGE_END);
 		} finally {
@@ -101,7 +112,12 @@ public class DeleteEmployee extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String empID = request.getParameter("empID");
+		Employee employee = new Employee((Integer.valueOf(empID)), null, null);
+		empDao.deleteEmployee(employee);
 		processRequest(request, response);
+		LOG.log(Level.INFO, "Request delete for empID: {0}", empID);
+
 	}
 
 	/**
