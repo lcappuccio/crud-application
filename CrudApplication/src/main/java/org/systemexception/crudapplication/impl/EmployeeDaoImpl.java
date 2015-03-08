@@ -206,6 +206,31 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return operationResult;
 	}
 
+	@Override
+	public boolean updateEmployee(Employee emp) {
+		boolean operationResult = false;
+		PreparedStatement pss = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pss = conn.prepareStatement("update EMPLOYEES set EMPLOYEE_NAME = ?, EMPLOYEE_SURNAME = ? where EMPLOYEE_ID = ?",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pss.setString(1, emp.getEmpName());
+			pss.setString(2, emp.getEmpSurname());
+			pss.setInt(3, emp.getEmpId());
+			int countRows = pss.executeUpdate();
+			if (countRows > 0) {
+				operationResult = true;
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			exceptionHandler(e);
+		} finally {
+			closeAll(conn, pss, rs);
+		}
+		return operationResult;
+	}
+
 	/**
 	 * Quietly close all database resources
 	 *

@@ -42,6 +42,14 @@ public interface EmployeeDao {
 	public boolean insertEmployee(Employee emp);
 
 	/**
+	 * Update an employee attribute (not id)
+	 *
+	 * @param emp
+	 * @return
+	 */
+	public boolean updateEmployee(Employee emp);
+
+	/**
 	 * Deletes employee
 	 *
 	 * @param emp
