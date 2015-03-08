@@ -1,5 +1,6 @@
 package org.systemexception.crudapplication.test;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Test;
@@ -15,17 +16,17 @@ import org.systemexception.crudapplication.test.impl.TestEmployeeDaoImpl;
 public class TestEmployeeDao {
 
 	private TestEmployeeDaoImpl sut;
-	private Employee emp;
+	private Employee employee;
 
 	@Before
 	public void setUp() {
 		sut = new TestEmployeeDaoImpl();
-		emp = new Employee(999, "Test", "Test");
+		employee = new Employee(999, "Test", "Test");
 	}
 
 	@After
 	public void tearDown() {
-		sut.deleteEmployee(emp);
+		sut.deleteEmployee(employee);
 	}
 
 	@Test
@@ -45,14 +46,24 @@ public class TestEmployeeDao {
 
 	@Test
 	public void test_1_EmployeeDaoInsert() {
-		assertTrue(sut.insertEmployeeWithId(emp));
-		sut.deleteEmployee(emp);
+		assertTrue(sut.insertEmployeeWithId(employee));
+		sut.deleteEmployee(employee);
 	}
 
 	@Test
 	public void test_2_EmployeeDaoDelete() {
-		sut.insertEmployeeWithId(emp);
-		assertTrue(sut.deleteEmployee(emp));
+		sut.insertEmployeeWithId(employee);
+		assertTrue(sut.deleteEmployee(employee));
+	}
+
+	@Test
+	public void test_3_EmployeeDaoUpdate() {
+		sut.insertEmployeeWithId(employee);
+		employee.setEmpName("TestNameUpdate");
+		employee.setEmpSurname("TestNameUpdate");
+		sut.updateEmployee(employee);
+		Employee employeeUpdated = sut.findById(employee.getEmpId());
+		assertEquals(employeeUpdated, employee);
 	}
 
 	@Test
