@@ -44,18 +44,27 @@ public class TestEmployeeDao {
 		assertTrue(sut.countEmployees() > 0);
 	}
 
+	/**
+	 * tests are run in consecutive order
+	 */
 	@Test
 	public void test_1_EmployeeDaoInsert() {
 		assertTrue(sut.insertEmployeeWithId(employee));
 		sut.deleteEmployee(employee);
 	}
 
+	/**
+	 * tests are run in consecutive order
+	 */
 	@Test
 	public void test_2_EmployeeDaoDelete() {
 		sut.insertEmployeeWithId(employee);
 		assertTrue(sut.deleteEmployee(employee));
 	}
 
+	/**
+	 * tests are run in consecutive order
+	 */
 	@Test
 	public void test_3_EmployeeDaoUpdate() {
 		sut.insertEmployeeWithId(employee);
