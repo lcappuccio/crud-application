@@ -50,41 +50,29 @@ public final class Employee {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + empId;
-		result = prime * result + ((empName == null) ? 0 : empName.hashCode());
-		result = prime * result + ((empSurname == null) ? 0 : empSurname.hashCode());
-		return result;
+		int hash = 3;
+		hash = 59 * hash + this.empId;
+		hash = 59 * hash + (this.empName != null ? this.empName.hashCode() : 0);
+		hash = 59 * hash + (this.empSurname != null ? this.empSurname.hashCode() : 0);
+		return hash;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
 		if (obj == null) {
 			return false;
 		}
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Employee other = (Employee) obj;
-		if (empId != other.empId) {
+		final Employee other = (Employee) obj;
+		if (this.empId != other.empId) {
 			return false;
 		}
-		if (empName == null) {
-			if (other.empName != null) {
-				return false;
-			}
-		} else if (!empName.equals(other.empName)) {
+		if ((this.empName == null) ? (other.empName != null) : !this.empName.equals(other.empName)) {
 			return false;
 		}
-		if (empSurname == null) {
-			if (other.empSurname != null) {
-				return false;
-			}
-		} else if (!empSurname.equals(other.empSurname)) {
+		if ((this.empSurname == null) ? (other.empSurname != null) : !this.empSurname.equals(other.empSurname)) {
 			return false;
 		}
 		return true;
