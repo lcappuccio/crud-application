@@ -64,6 +64,11 @@
 						<exclude>**/BadWorld.*</exclude>
 						<exclude>**/DeleteEmployee.*</exclude>
 						<exclude>**/EmployeesJson.*</exclude>
+						<exclude>**/HelloWorld.*</exclude>
+						<exclude>**/InsertEmployee.*</exclude>
+						<exclude>**/ListEmployees.*</exclude>
+						<exclude>**/RandomEmployee.*</exclude>
+						<exclude>**/UpdateEmployee.*</exclude>
 					</excludes>
 				</configuration>
 				<executions>
