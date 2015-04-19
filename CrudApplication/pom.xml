@@ -4,7 +4,7 @@
 
 	<groupId>org.systemexception</groupId>
 	<artifactId>CrudApplication</artifactId>
-	<version>7</version>
+	<version>0.7</version>
 	<packaging>war</packaging>
 
 	<name>CrudApplication</name>
@@ -56,6 +56,32 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.4.201502262128</version>
+				<configuration>
+					<excludes>
+						<exclude>**/BadWorld.*</exclude>
+						<exclude>**/DeleteEmployee.*</exclude>
+						<exclude>**/EmployeesJson.*</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
@@ -102,15 +128,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-		</plugins>
-	</reporting>
-
 </project>
