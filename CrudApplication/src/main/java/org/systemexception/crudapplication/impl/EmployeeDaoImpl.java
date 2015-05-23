@@ -42,6 +42,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		 * for production use ("jdbc:mysql://localhost:3306/test");
 		 * for production use ("jdbc:mysql://localhost:3306/test");
 		 */
+		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.3:3306/test");
 		dataSource.setUsername("test");
 		dataSource.setPassword("test");
 		dataSource.setConnectionTimeout(5000);
