@@ -1,15 +1,16 @@
 package org.systemexception.crudapplication.servlet;
 
+import org.systemexception.crudapplication.pojo.Util;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.systemexception.crudapplication.pojo.Util;
 
 /**
  *
@@ -17,7 +18,6 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class BadWorld extends HttpServlet {
 
-	private static final long serialVersionUID = -7457917008623060783L;
 	private static final Logger LOG = Logger.getLogger(BadWorld.class.getCanonicalName());
 
 	/**

@@ -1,17 +1,18 @@
 package org.systemexception.crudapplication.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.systemexception.crudapplication.api.EmployeeDao;
+import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.pojo.Util;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.systemexception.crudapplication.api.EmployeeDao;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
-import org.systemexception.crudapplication.pojo.Util;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,10 +20,8 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class InsertEmployee extends HttpServlet {
 
-	private static final long serialVersionUID = 3349045542810157960L;
 	private static final Logger LOG = Logger.getLogger(InsertEmployee.class.getCanonicalName());
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
-	private Employee emp;
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -90,7 +89,7 @@ public class InsertEmployee extends HttpServlet {
 
 		String empName = request.getParameter("employeeName");
 		String empSurname = request.getParameter("employeeSurname");
-		emp = new Employee(empName, empSurname);
+		Employee emp = new Employee(empName, empSurname);
 		empDao.insertEmployee(emp);
 		processRequest(request, response);
 		LOG.log(Level.INFO, "Insert employee: {0}, {1}, remote IP: {2}", new Object[]{empName, empSurname, request.getRemoteAddr()});

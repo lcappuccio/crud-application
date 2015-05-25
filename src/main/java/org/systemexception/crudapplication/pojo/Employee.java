@@ -72,9 +72,6 @@ public final class Employee {
 		if ((this.empName == null) ? (other.empName != null) : !this.empName.equals(other.empName)) {
 			return false;
 		}
-		if ((this.empSurname == null) ? (other.empSurname != null) : !this.empSurname.equals(other.empSurname)) {
-			return false;
-		}
-		return true;
+		return !((this.empSurname == null) ? (other.empSurname != null) : !this.empSurname.equals(other.empSurname));
 	}
 }

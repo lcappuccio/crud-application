@@ -22,23 +22,23 @@
  */
 package org.systemexception.crudapplication.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.Util;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class UpdateEmployee extends HttpServlet {
 
-	private static final long serialVersionUID = -7018455995593636463L;
 	private static final Logger LOG = Logger.getLogger(UpdateEmployee.class.getCanonicalName());
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 

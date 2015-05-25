@@ -1,7 +1,8 @@
 package org.systemexception.crudapplication.api;
 
-import java.util.List;
 import org.systemexception.crudapplication.pojo.Employee;
+
+import java.util.List;
 
 /**
  *
@@ -16,14 +17,14 @@ public interface EmployeeDao {
 	 * @param empId
 	 * @return
 	 */
-	public Employee findById(int empId);
+	Employee findById(int empId);
 
 	/**
 	 * Returns an employee full list
 	 *
 	 * @return
 	 */
-	public List<Employee> getAllEmployees();
+	List<Employee> getAllEmployees();
 
 	/**
 	 * Find employee by name
@@ -31,7 +32,7 @@ public interface EmployeeDao {
 	 * @param empName
 	 * @return
 	 */
-	public List<Employee> findByName(String empName);
+	List<Employee> findByName(String empName);
 
 	/**
 	 * Insert employee, no ID
@@ -39,7 +40,7 @@ public interface EmployeeDao {
 	 * @param emp
 	 * @return
 	 */
-	public boolean insertEmployee(Employee emp);
+	boolean insertEmployee(Employee emp);
 
 	/**
 	 * Update an employee attribute (not id)
@@ -47,7 +48,7 @@ public interface EmployeeDao {
 	 * @param emp
 	 * @return
 	 */
-	public boolean updateEmployee(Employee emp);
+	boolean updateEmployee(Employee emp);
 
 	/**
 	 * Deletes employee
@@ -55,12 +56,12 @@ public interface EmployeeDao {
 	 * @param emp
 	 * @return
 	 */
-	public boolean deleteEmployee(Employee emp);
+	boolean deleteEmployee(Employee emp);
 
 	/**
 	 * Returns the employee count
 	 *
 	 * @return
 	 */
-	public int countEmployees();
+	int countEmployees();
 }

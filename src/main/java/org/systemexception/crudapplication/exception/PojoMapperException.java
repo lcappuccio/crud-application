@@ -7,8 +7,6 @@ package org.systemexception.crudapplication.exception;
  */
 public class PojoMapperException extends Exception {
 
-	private static final long serialVersionUID = -5757918482309489166L;
-
 	public PojoMapperException() {
 	}
 

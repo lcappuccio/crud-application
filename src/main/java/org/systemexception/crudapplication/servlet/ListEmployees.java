@@ -1,15 +1,16 @@
 package org.systemexception.crudapplication.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.systemexception.crudapplication.pojo.Employees;
+import org.systemexception.crudapplication.pojo.Util;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.systemexception.crudapplication.pojo.Employees;
-import org.systemexception.crudapplication.pojo.Util;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +18,6 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class ListEmployees extends HttpServlet {
 
-	private static final long serialVersionUID = -5033816012389264380L;
 	private static final Logger LOG = Logger.getLogger(ListEmployees.class.getCanonicalName());
 
 	/**

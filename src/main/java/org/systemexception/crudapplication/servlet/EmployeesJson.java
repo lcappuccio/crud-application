@@ -1,16 +1,17 @@
 package org.systemexception.crudapplication.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.systemexception.crudapplication.exception.PojoMapperException;
+import org.systemexception.crudapplication.pojo.Employees;
+import org.systemexception.crudapplication.pojo.PojoMapper;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.systemexception.crudapplication.exception.PojoMapperException;
-import org.systemexception.crudapplication.pojo.Employees;
-import org.systemexception.crudapplication.pojo.PojoMapper;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,7 +20,6 @@ import org.systemexception.crudapplication.pojo.PojoMapper;
  */
 public class EmployeesJson extends HttpServlet {
 
-	private static final long serialVersionUID = 8069911911112010811L;
 	private static final Logger LOG = Logger.getLogger(EmployeesJson.class.getCanonicalName());
 	private final PojoMapper pojoMapper = new PojoMapper();
 

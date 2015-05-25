@@ -1,14 +1,15 @@
 package org.systemexception.crudapplication.test;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.Test;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.exception.PojoMapperException;
-import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.PojoMapper;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -17,10 +18,12 @@ import org.systemexception.crudapplication.pojo.PojoMapper;
  */
 public class TestPojoMapper {
 
-	Employee emp1, emp2, emp3;
-	Employees employees;
-	EmployeeDao empDao = new EmployeeDaoImpl();
-	PojoMapper sut = new PojoMapper();
+	private Employee emp1;
+	private Employee emp2;
+	private Employee emp3;
+	private Employees employees;
+	private final EmployeeDao empDao = new EmployeeDaoImpl();
+	private final PojoMapper sut = new PojoMapper();
 
 	@Before
 	public void setUp() {

@@ -22,23 +22,24 @@
  */
 package org.systemexception.crudapplication.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.Util;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class DeleteEmployee extends HttpServlet {
 
-	private static final long serialVersionUID = -686520693341461360L;
+	// --Commented out by Inspection (26/05/15 00:50):private static final long serialVersionUID = -686520693341461360L;
 	private static final Logger LOG = Logger.getLogger(DeleteEmployee.class.getCanonicalName());
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
