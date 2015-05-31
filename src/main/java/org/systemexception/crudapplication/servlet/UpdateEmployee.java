@@ -48,9 +48,9 @@ public class UpdateEmployee extends HttpServlet {
 	 * @param empID
 	 * @return
 	 */
-	private String getDeleteEmployeeButton(String empID) {
+	private String getUpdateEmployeeButton(String empID) {
 		return "<button type=\"submit\" class=\"btn btn-default\" "
-				+ "name=\"empID\" value=\"" + empID + "\"" + ">Delete</button>";
+				+ "name=\"empID\" value=\"" + empID + "\"" + ">Update</button>";
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class UpdateEmployee extends HttpServlet {
 			out.println("<div class=\"container\">");
 			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
-			out.println("<form class=\"form-delete\" action=\"UpdateEmployee\" method=\"POST\">");
+			out.println("<form class=\"form-update\" action=\"UpdateEmployee\" method=\"POST\">");
 			out.println("<table class=\"table table-hover\">");
 			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th><th></th></tr>");
 			for (int i = 0; i < employees.countEmployees(); i++) {
@@ -83,7 +83,7 @@ public class UpdateEmployee extends HttpServlet {
 				out.println("<tr><td>" + empID + "</td>"
 						+ "<td contenteditable='true'>" + empName + "</td>"
 						+ "<td contenteditable='true'>" + empLastName + "</td>"
-						+ "<td>" + getDeleteEmployeeButton(empID) + "</td></tr>");
+						+ "<td>" + getUpdateEmployeeButton(empID) + "</td></tr>");
 			}
 			out.println("</table>");
 			out.println("</form>");
