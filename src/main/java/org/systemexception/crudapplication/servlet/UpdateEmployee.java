@@ -122,9 +122,8 @@ public class UpdateEmployee extends HttpServlet {
 			throws ServletException, IOException {
 		String empID = request.getParameter("empID");
 		Employee employee = new Employee((Integer.valueOf(empID)), null, null);
-//		empDao.deleteEmployee(employee);
 		processRequest(request, response);
-		LOG.log(Level.INFO, "Request delete for empID: {0}", empID);
+		LOG.log(Level.INFO, "Request update for empID: {0}", empID);
 	}
 
 	/**
