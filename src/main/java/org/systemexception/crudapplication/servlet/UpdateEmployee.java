@@ -74,13 +74,13 @@ public class UpdateEmployee extends HttpServlet {
 			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
 			out.println("<form class=\"form-update\" action=\"UpdateEmployee\" method=\"POST\">");
-			out.println("<table class=\"table table-hover\">");
+			out.println("<table class=\"table table-hover\" id=\"updateEmployeeTable\">");
 			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th><th></th></tr>");
 			for (int i = 0; i < employees.countEmployees(); i++) {
 				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
 				String empLastName = employees.getEmpList().get(i).getEmpSurname();
-				out.println("<tr><td>" + empID + "</td>"
+				out.println("<tr><td><div class=\"empID\">" + empID + "</div></td>"
 						+ "<td contenteditable='true'>" + empName + "</td>"
 						+ "<td contenteditable='true'>" + empLastName + "</td>"
 						+ "<td>" + getUpdateEmployeeButton(empID) + "</td></tr>");
