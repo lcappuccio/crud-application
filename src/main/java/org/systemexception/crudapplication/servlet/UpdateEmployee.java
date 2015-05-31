@@ -71,7 +71,7 @@ public class UpdateEmployee extends HttpServlet {
 		try {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");
-			out.println("<h2>List Employees</h2><hr>");
+			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
 			out.println("<form class=\"form-delete\" action=\"UpdateEmployee\" method=\"POST\">");
 			out.println("<table class=\"table table-hover\">");
