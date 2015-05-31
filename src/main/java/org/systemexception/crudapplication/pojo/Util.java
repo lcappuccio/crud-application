@@ -10,7 +10,7 @@ import java.util.Locale;
 public class Util {
 
 	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">";
-
+	public static final String JQUERY_PATH = "<script src=\"resources/js/jquery-1.11.3.min.js\"></script>";
 	public static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"resources/images/favicon.png\">";
 
 	public static final String PAGE_HEADER = "<html>"
@@ -18,6 +18,7 @@ public class Util {
 			+ " <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
 			+ " <title>Basic Crud Application</title>\n"
 			+ BOOTSTRAP_CSS_PATH + "\n"
+			+ JQUERY_PATH + "\n"
 			+ FAVICON_PATH + "\n"
 			+ " </head>\n"
 			// Body starts here
