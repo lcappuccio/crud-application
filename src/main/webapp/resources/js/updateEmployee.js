@@ -8,8 +8,12 @@ $('#updateEmployeeTable tr').each(function () {
     console.log(customerIdRaw);
 });
 
-$(function() {
-    $('#empID').click(function () {
-        console.log("Clicked " + $(this).attr("value"));
-    });
-})
+$(document).ready(function(){
+    $("button").on('click', handleClick);
+});
+function handleClick()
+{
+    $(this).siblings().on('click', handleClick);
+    $(this).off('click');
+    console.log($(this).attr("value"));
+}
