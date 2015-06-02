@@ -16,4 +16,6 @@ function handleClick()
     $(this).siblings().on('click', handleClick);
     $(this).off('click');
     console.log($(this).attr("value"));
+    var id = $(this).closest("tr").find("td").eq(1).text();
+    console.log("Id is " + id);
 }
