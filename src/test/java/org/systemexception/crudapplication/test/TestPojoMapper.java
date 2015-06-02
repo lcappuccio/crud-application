@@ -19,8 +19,6 @@ import static org.junit.Assert.assertTrue;
 public class TestPojoMapper {
 
 	private Employee emp1;
-	private Employee emp2;
-	private Employee emp3;
 	private Employees employees;
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 	private final PojoMapper sut = new PojoMapper();
@@ -28,8 +26,8 @@ public class TestPojoMapper {
 	@Before
 	public void setUp() {
 		emp1 = empDao.findById(1);
-		emp2 = empDao.findById(2);
-		emp3 = empDao.findById(3);
+		Employee emp2 = empDao.findById(2);
+		Employee emp3 = empDao.findById(3);
 		employees = new Employees();
 	}
 
