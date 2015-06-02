@@ -73,7 +73,7 @@ public class UpdateEmployee extends HttpServlet {
 			out.println("<div class=\"container\">");
 			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
-			out.println("<form class=\"form-update\" action=\"UpdateEmployee\" method=\"POST\">");
+			out.println("<form class=\"form-update\">");
 			out.println("<table class=\"table table-hover\" id=\"updateEmployeeTable\">");
 			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th><th></th></tr>");
 			for (int i = 0; i < employees.countEmployees(); i++) {
@@ -120,10 +120,13 @@ public class UpdateEmployee extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String empID = request.getParameter("empID");
-		Employee employee = new Employee((Integer.valueOf(empID)), null, null);
+		int empID = Integer.parseInt(request.getParameter("empID"));
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		Employee employee = new Employee(empID, firstName, lastName);
+		empDao.updateEmployee(employee);
+		LOG.log(Level.INFO, "Request update for empID: " + empID + ": " + firstName + "," + lastName);
 		processRequest(request, response);
-		LOG.log(Level.INFO, "Request update for empID: {0}", empID);
 	}
 
 	/**
