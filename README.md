@@ -14,4 +14,5 @@ Available servlets:
 * RandomEmployee: **r**eads a random employee
 * ListEmployees: **r**eads a table with all employees in the database
 * EmployeesJson: **r**eads the full employee list in a JSON
+* UpdateEmployee: **u**pdate employee record
 * DeleteEmployee: **d**elete an employee
