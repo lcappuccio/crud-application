@@ -7,23 +7,22 @@
 package org.systemexception.crudapplication.impl;
 
 import com.zaxxer.hikari.HikariDataSource;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import org.systemexception.crudapplication.api.EmployeeDao;
+import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.logger.api.Logger;
+import org.systemexception.logger.impl.LoggerImpl;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.systemexception.crudapplication.api.EmployeeDao;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.pojo.Util;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
-	private static final Logger LOG = Logger.getLogger(EmployeeDaoImpl.class.getCanonicalName());
+	private static final Logger LOG = LoggerImpl.getFor(EmployeeDaoImpl.class);
 	private final HikariDataSource dataSource = new HikariDataSource();
 	private Connection conn;
 
@@ -264,9 +263,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 * @param exception
 	 */
 	private void exceptionHandler(SQLException exception) {
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		exception.printStackTrace(pw);
-		LOG.log(Level.SEVERE, "Error in DAO\n{0}", sw.toString());
+		LOG.error("Error in DAO\n{0}", exception);
 	}
 }

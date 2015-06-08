@@ -2,6 +2,7 @@ package org.systemexception.crudapplication.servlet;
 
 import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class ListEmployees extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(ListEmployees.class.getCanonicalName());
+	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(ListEmployees.class);
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,8 +32,8 @@ public class ListEmployees extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
-		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
-		LOG.log(Level.INFO, "retrieved {0} employees", employees.countEmployees());
+		LOG.info("request from " + request.getRemoteAddr());
+		LOG.info("retrieved " + employees.countEmployees() + " employees");
 		try {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");

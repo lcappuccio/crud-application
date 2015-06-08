@@ -1,6 +1,7 @@
 package org.systemexception.crudapplication.servlet;
 
 import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class BadWorld extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(BadWorld.class.getCanonicalName());
+	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(BadWorld.class);
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -34,7 +33,7 @@ public class BadWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
-		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
+		LOG.info("request from " + request.getRemoteAddr());
 		try {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");
