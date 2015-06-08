@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
 import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.test.impl.TestEmployeeDaoImpl;
 
 /**
  *

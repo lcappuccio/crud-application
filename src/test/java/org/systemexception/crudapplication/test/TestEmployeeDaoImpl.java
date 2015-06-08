@@ -4,9 +4,12 @@
  * @date 20/02/2015 20:05
  *
  */
-package org.systemexception.crudapplication.test.impl;
+package org.systemexception.crudapplication.test;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.pojo.Employee;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Connection;
@@ -15,8 +18,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 
 public class TestEmployeeDaoImpl extends EmployeeDaoImpl {
 

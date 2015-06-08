@@ -4,6 +4,7 @@ import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class RandomEmployee extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(RandomEmployee.class.getCanonicalName());
+	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(RandomEmployee.class);
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
 	/**
@@ -36,7 +35,7 @@ public class RandomEmployee extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
+		LOG.info("request from " + request.getRemoteAddr());
 		try {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");

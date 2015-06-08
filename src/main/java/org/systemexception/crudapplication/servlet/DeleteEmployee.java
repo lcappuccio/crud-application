@@ -27,6 +27,7 @@ import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.pojo.Employee;
 import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,13 +35,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DeleteEmployee extends HttpServlet {
 
-	// --Commented out by Inspection (26/05/15 00:50):private static final long serialVersionUID = -686520693341461360L;
-	private static final Logger LOG = Logger.getLogger(DeleteEmployee.class.getCanonicalName());
+	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(DeleteEmployee.class);
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
 	/**
@@ -67,8 +65,8 @@ public class DeleteEmployee extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
-		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
-		LOG.log(Level.INFO, "retrieved {0} employees", employees.countEmployees());
+		LOG.info("request from " + request.getRemoteAddr());
+		LOG.info("retrieved " + employees.countEmployees() + " employees");
 		try {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");
@@ -123,7 +121,7 @@ public class DeleteEmployee extends HttpServlet {
 		Employee employee = new Employee((Integer.valueOf(empID)), null, null);
 		empDao.deleteEmployee(employee);
 		processRequest(request, response);
-		LOG.log(Level.INFO, "Request delete for empID: {0}", empID);
+		LOG.info("Request delete for empID: " + empID);
 
 	}
 

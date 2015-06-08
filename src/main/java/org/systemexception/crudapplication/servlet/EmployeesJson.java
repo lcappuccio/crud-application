@@ -3,6 +3,7 @@ package org.systemexception.crudapplication.servlet;
 import org.systemexception.crudapplication.exception.PojoMapperException;
 import org.systemexception.crudapplication.pojo.Employees;
 import org.systemexception.crudapplication.pojo.PojoMapper;
+import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class EmployeesJson extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(EmployeesJson.class.getCanonicalName());
+	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(EmployeesJson.class);
 	private final PojoMapper pojoMapper = new PojoMapper();
 
 	/**
@@ -38,8 +37,8 @@ public class EmployeesJson extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
 		String employeesJson = pojoMapper.employeesToJson(employees);
-		LOG.log(Level.INFO, "request from {0}", request.getRemoteAddr());
-		LOG.log(Level.INFO, "retrieved {0} employees", employees.countEmployees());
+		LOG.info("request from " + request.getRemoteAddr());
+		LOG.info("retrieved " + employees.countEmployees()+ " employees");
 		try {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
@@ -70,7 +69,7 @@ public class EmployeesJson extends HttpServlet {
 		try {
 			processRequest(request, response);
 		} catch (PojoMapperException ex) {
-			Logger.getLogger(EmployeesJson.class.getName()).log(Level.SEVERE, null, ex);
+			LOG.error("Error in servlet " + this.getServletInfo(), ex);
 		}
 	}
 
@@ -88,7 +87,7 @@ public class EmployeesJson extends HttpServlet {
 		try {
 			processRequest(request, response);
 		} catch (PojoMapperException ex) {
-			Logger.getLogger(EmployeesJson.class.getName()).log(Level.SEVERE, null, ex);
+			LOG.error("Error in servlet " + this.getServletInfo(), ex);
 		}
 	}
 
