@@ -1,14 +1,14 @@
 package org.systemexception.crudapplication.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.logger.impl.LoggerImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.systemexception.crudapplication.pojo.Util;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -16,7 +16,7 @@ import org.systemexception.crudapplication.pojo.Util;
  */
 public class HelloWorld extends HttpServlet {
 
-	private static final Logger LOG = Logger.getLogger(HelloWorld.class.getCanonicalName());
+	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(HelloWorld.class);
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,7 +30,7 @@ public class HelloWorld extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		LOG.log(Level.INFO, "request to {0}", this.getClass().getCanonicalName());
+		LOG.info("request to " + this.getClass().getCanonicalName());
 		try {
 			out.println(Util.PAGE_HEADER);
 			out.println("<div class=\"container\">");
