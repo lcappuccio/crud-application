@@ -1,11 +1,12 @@
 package org.systemexception.crudapplication.test;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.systemexception.crudapplication.pojo.Employee;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.Before;
-import org.systemexception.crudapplication.pojo.Employee;
 
 /**
  *
@@ -30,7 +31,7 @@ public class TestEmployeeDao {
 
 	@Test
 	public void testGetHomer() {
-		assertTrue("Homer".equals(sut.findById(1).getEmpName()));
+		assertTrue("Homer".equals(sut.findById(0).getEmpName()));
 	}
 
 	@Test

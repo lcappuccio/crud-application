@@ -18,29 +18,27 @@ import static org.junit.Assert.assertTrue;
  */
 public class TestPojoMapper {
 
-	private Employee emp1;
+	private Employee emp;
 	private Employees employees;
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 	private final PojoMapper sut = new PojoMapper();
 
 	@Before
 	public void setUp() {
-		emp1 = empDao.findById(1);
-		Employee emp2 = empDao.findById(2);
-		Employee emp3 = empDao.findById(3);
+		emp = empDao.findById(0);
 		employees = new Employees();
 	}
 
 	@Test
 	public void testEmpToJson() throws PojoMapperException {
-		assertTrue("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.employeeToJson(emp1)));
+		assertTrue("{\"empId\":0,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}".equals(sut.employeeToJson(emp)));
 	}
 
 	@Test
 	public void testJsonToEmp() throws PojoMapperException {
-		emp1 = empDao.findById(1);
-		Employee empJson = sut.jsonToEmployee("{\"empId\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
-		assertTrue(emp1.equals(empJson));
+		emp = empDao.findById(0);
+		Employee empJson = sut.jsonToEmployee("{\"empId\":0,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
+		assertTrue(emp.equals(empJson));
 	}
 
 	@Test
