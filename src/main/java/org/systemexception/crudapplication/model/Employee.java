@@ -1,7 +1,6 @@
 package org.systemexception.crudapplication.model;
 
 /**
- *
  * @author leo
  * @date Feb 18, 2015 12:24:00 AM
  */

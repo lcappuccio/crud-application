@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- *
  * @author leo
  */
 public class InsertEmployee extends HttpServlet {
@@ -25,10 +24,10 @@ public class InsertEmployee extends HttpServlet {
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -43,11 +42,13 @@ public class InsertEmployee extends HttpServlet {
 
 			out.println("<div class=\"form-group\">"
 					+ "<label class=\"sr-only\" for=\"employeeName\">Name</label>"
-					+ "<input type=\"text\" class=\"form-control\" id=\"employeeName\" placeholder=\"Enter employee name\" name=\"employeeName\"></div>");
+					+ "<input type=\"text\" class=\"form-control\" id=\"employeeName\" placeholder=\"Enter employee " +
+					"name\" name=\"employeeName\"></div>");
 
 			out.println("<div class=\"form-group\">"
 					+ "<label class=\"sr-only\" for=\"employeeSurname\">Surname</label>"
-					+ "<input type=\"text\" class=\"form-control\" id=\"employeeSurname\" placeholder=\"Enter employee name\" name=\"employeeSurname\"></div>");
+					+ "<input type=\"text\" class=\"form-control\" id=\"employeeSurname\" placeholder=\"Enter employee" +
+					" name\" name=\"employeeSurname\"></div>");
 
 			out.println("<button type=\"submit\" class=\"btn btn-default\">Submit</button>");
 
@@ -59,14 +60,16 @@ public class InsertEmployee extends HttpServlet {
 		}
 	}
 
-	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the
+	// code.">
+
 	/**
 	 * Handles the HTTP <code>GET</code> method.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -77,10 +80,10 @@ public class InsertEmployee extends HttpServlet {
 	/**
 	 * Handles the HTTP <code>POST</code> method.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -91,7 +94,7 @@ public class InsertEmployee extends HttpServlet {
 		Employee emp = new Employee(empName, empSurname);
 		empDao.insertEmployee(emp);
 		processRequest(request, response);
-		LOG.info("Insert employee: " + empName + ", " +empSurname + ", remote IP: " + request.getRemoteAddr());
+		LOG.info("Insert employee: " + empName + ", " + empSurname + ", remote IP: " + request.getRemoteAddr());
 	}
 
 	/**

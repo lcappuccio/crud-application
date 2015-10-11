@@ -1,12 +1,12 @@
 package org.systemexception.crudapplication.model;
 
+import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.systemexception.crudapplication.api.EmployeeDao;
 
 /**
- *
  * @author leo
  * @date Feb 18, 2015 12:46:35 AM
  */
