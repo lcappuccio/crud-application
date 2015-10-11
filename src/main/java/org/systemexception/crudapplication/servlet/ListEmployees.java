@@ -1,7 +1,7 @@
 package org.systemexception.crudapplication.servlet;
 
-import org.systemexception.crudapplication.pojo.Employees;
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.model.Employees;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class ListEmployees extends HttpServlet {
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
 		try {
-			out.println(Util.PAGE_HEADER);
+			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
@@ -49,7 +49,7 @@ public class ListEmployees extends HttpServlet {
 			}
 			out.println("</table>");
 			out.println("</div>");
-			out.println(Util.PAGE_END);
+			out.println(Constants.PAGE_END);
 		} finally {
 			out.close();
 		}

@@ -1,7 +1,7 @@
 package org.systemexception.crudapplication.servlet;
 
 import org.systemexception.crudapplication.exception.PojoMapperException;
-import org.systemexception.crudapplication.pojo.Employees;
+import org.systemexception.crudapplication.model.Employees;
 import org.systemexception.crudapplication.pojo.PojoMapper;
 import org.systemexception.logger.impl.LoggerImpl;
 

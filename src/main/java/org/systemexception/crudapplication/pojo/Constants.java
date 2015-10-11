@@ -7,7 +7,7 @@ import java.util.Locale;
  * @author leo
  * @date Feb 19, 2015 8:34:31 PM
  */
-public class Util {
+public class Constants {
 
 	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">";
 	public static final String JQUERY_PATH = "<script src=\"resources/js/jquery-1.11.3.min.js\"></script>";
