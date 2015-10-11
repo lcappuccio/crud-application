@@ -8,7 +8,7 @@ package org.systemexception.crudapplication.test;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
-import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.model.Employee;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

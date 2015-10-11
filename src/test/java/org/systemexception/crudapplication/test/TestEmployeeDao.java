@@ -3,7 +3,7 @@ package org.systemexception.crudapplication.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.model.Employee;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;

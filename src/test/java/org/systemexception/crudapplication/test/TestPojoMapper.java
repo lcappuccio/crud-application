@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.exception.PojoMapperException;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.pojo.Employees;
+import org.systemexception.crudapplication.model.Employee;
+import org.systemexception.crudapplication.model.Employees;
 import org.systemexception.crudapplication.pojo.PojoMapper;
 
 import static org.junit.Assert.assertTrue;

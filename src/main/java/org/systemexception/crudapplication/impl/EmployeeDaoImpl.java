@@ -8,8 +8,8 @@ package org.systemexception.crudapplication.impl;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.systemexception.crudapplication.api.EmployeeDao;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.model.Employee;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.api.Logger;
 import org.systemexception.logger.impl.LoggerImpl;
 
@@ -113,7 +113,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 					.prepareStatement(
 							"select EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME from EMPLOYEES where lower(EMPLOYEE_NAME) LIKE ?",
 							ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			pss.setString(1, "%" + empName.toLowerCase(Util.LOCALE) + "%");
+			pss.setString(1, "%" + empName.toLowerCase(Constants.LOCALE) + "%");
 			rs = pss.executeQuery();
 			while (rs.next()) {
 				Employee emp = new Employee();

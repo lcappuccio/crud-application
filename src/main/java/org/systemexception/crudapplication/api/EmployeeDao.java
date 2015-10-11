@@ -1,6 +1,6 @@
 package org.systemexception.crudapplication.api;
 
-import org.systemexception.crudapplication.pojo.Employee;
+import org.systemexception.crudapplication.model.Employee;
 
 import java.util.List;
 

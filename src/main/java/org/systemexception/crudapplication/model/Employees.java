@@ -1,4 +1,4 @@
-package org.systemexception.crudapplication.pojo;
+package org.systemexception.crudapplication.model;
 
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import java.util.ArrayList;

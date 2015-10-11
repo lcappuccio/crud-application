@@ -1,6 +1,6 @@
 package org.systemexception.crudapplication.servlet;
 
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
@@ -35,12 +35,12 @@ public class BadWorld extends HttpServlet {
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
 		LOG.info("request from " + request.getRemoteAddr());
 		try {
-			out.println(Util.PAGE_HEADER);
+			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Bad World!</h2><hr>");
 			out.println("Guess this: " + rndStr);
 			out.println("</div>");
-			out.println(Util.PAGE_END);
+			out.println(Constants.PAGE_END);
 		} finally {
 			out.close();
 		}

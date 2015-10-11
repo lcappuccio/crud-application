@@ -1,6 +1,6 @@
 package org.systemexception.crudapplication.servlet;
 
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
@@ -32,12 +32,12 @@ public class HelloWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		LOG.info("request to " + this.getClass().getCanonicalName());
 		try {
-			out.println(Util.PAGE_HEADER);
+			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Servlet HelloWorld at " + request.getContextPath() + "</h2><hr>");
 			out.println("Your IP: " + request.getRemoteAddr());
 			out.println("</div>");
-			out.println(Util.PAGE_END);
+			out.println(Constants.PAGE_END);
 		} finally {
 			out.close();
 		}
