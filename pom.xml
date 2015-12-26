@@ -23,11 +23,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.lcappuccio</groupId>
-            <artifactId>common-logger</artifactId>
-            <version>1.1.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>2.3.2</version>

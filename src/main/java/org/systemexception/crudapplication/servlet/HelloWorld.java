@@ -1,7 +1,8 @@
 package org.systemexception.crudapplication.servlet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.systemexception.crudapplication.pojo.Constants;
-import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import java.io.PrintWriter;
  */
 public class HelloWorld extends HttpServlet {
 
-	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(HelloWorld.class);
+	private final Logger LOG = LoggerFactory.getLogger(HelloWorld.class);
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
