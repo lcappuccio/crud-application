@@ -45,9 +45,8 @@ public class TestPojoMapper {
 		System.out.println(sut.employeesToJson(employees));
 	}
 
-	@Test(expected = org.systemexception.crudapplication.exception.PojoMapperException.class)
+	@Test(expected = PojoMapperException.class)
 	public void testException() throws PojoMapperException {
 		Employee empJson = sut.jsonToEmployee("{\"empOID\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
-
 	}
 }

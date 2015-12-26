@@ -20,6 +20,8 @@ before_script:
                        EMPLOYEE_ID DECIMAL(10, 0) NOT NULL,
                        SALARY      FLOAT          NULL
                      );'"
+    - sh -c "mysql -e 'INSERT INTO myapp_test.EMPLOYEES
+    (EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME ) VALUES (0, \"Homer\", \"Simpson\")'"
 
 after_success:
   - codecov
