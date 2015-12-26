@@ -5,6 +5,7 @@ A basic crud application example
 
 [![codecov.io](https://codecov.io/github/lcappuccio/crud-application/coverage.svg?branch=master)](https://codecov.io/github/lcappuccio/crud-application?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/92b25f0e94fb4704b87af54a39a0d08b)](https://www.codacy.com/app/leo_4/crud-application)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/92b25f0e94fb4704b87af54a39a0d08b)](https://www.codacy.com/app/leo_4/crud-application)
 
 ## Installation
 1. Create the necessary database table on your favourite RDBMS (see script.sql)
