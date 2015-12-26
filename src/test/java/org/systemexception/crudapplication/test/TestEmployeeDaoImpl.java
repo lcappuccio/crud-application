@@ -1,8 +1,6 @@
 /**
- *
  * @author leo
  * @date 20/02/2015 20:05
- *
  */
 package org.systemexception.crudapplication.test;
 

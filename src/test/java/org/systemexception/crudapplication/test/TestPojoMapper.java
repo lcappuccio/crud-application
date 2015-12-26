@@ -12,7 +12,6 @@ import org.systemexception.crudapplication.pojo.PojoMapper;
 import static org.junit.Assert.assertTrue;
 
 /**
- *
  * @author leo
  * @date Feb 18, 2015 12:33:37 AM
  */
