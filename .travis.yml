@@ -1,0 +1,16 @@
+sudo: false
+language: java
+
+services:
+  - mysql
+
+jdk:
+  - oraclejdk8
+
+before_script:
+  - pip install --user codecov
+  - mysql -e 'create database myapp_test;'
+
+
+after_success:
+  - codecov
