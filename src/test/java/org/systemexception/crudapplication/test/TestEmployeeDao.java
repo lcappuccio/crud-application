@@ -1,5 +1,7 @@
 package org.systemexception.crudapplication.test;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.systemexception.crudapplication.model.Employee;
 
@@ -12,8 +14,19 @@ import static junit.framework.Assert.assertTrue;
  */
 public class TestEmployeeDao {
 
-	private TestEmployeeDaoImpl sut = new TestEmployeeDaoImpl();;
-	private Employee employee = new Employee(999, "Test", "Test");;
+	private TestEmployeeDaoImpl sut;
+	private Employee employee;
+
+	@Before
+	public void setUp() {
+		sut = new TestEmployeeDaoImpl();
+		employee = new Employee(999, "Test", "Test");
+	}
+
+	@After
+	public void tearDown() {
+		sut.deleteEmployee(employee);
+	}
 
 	@Test
 	public void testGetHomer() {
