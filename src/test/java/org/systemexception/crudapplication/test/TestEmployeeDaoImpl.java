@@ -35,7 +35,7 @@ public class TestEmployeeDaoImpl extends EmployeeDaoImpl {
 		dataSource.setUsername("travis");
 		dataSource.setPassword(null);
 		dataSource.setConnectionTimeout(5000);
-		dataSource.setIdleTimeout(5000);
+		dataSource.setIdleTimeout(10000);
 		dataSource.setMaximumPoolSize(2);
 		dataSource.setAutoCommit(false);
 		conn = dataSource.getConnection();
