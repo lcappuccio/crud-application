@@ -50,7 +50,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		dataSource.setPassword(null);
 		dataSource.setConnectionTimeout(5000);
 		dataSource.setIdleTimeout(300000);
-		dataSource.setMaximumPoolSize(8);
+		dataSource.setMaximumPoolSize(1);
 		dataSource.setAutoCommit(false);
 		conn = dataSource.getConnection();
 		return (conn);
