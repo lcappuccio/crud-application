@@ -1,15 +1,13 @@
 /**
- *
  * @author leo
  * @date 24/02/2015 22:59
- *
  */
 package org.systemexception.crudapplication.impl;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.systemexception.crudapplication.api.EmployeeDao;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.model.Employee;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.api.Logger;
 import org.systemexception.logger.impl.LoggerImpl;
 
@@ -60,7 +58,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try {
 			conn = getConnection();
 			pss = conn.prepareStatement(
-					"select EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME from EMPLOYEES where EMPLOYEE_ID = ?",
+					"SELECT EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME FROM EMPLOYEES WHERE EMPLOYEE_ID = ?",
 					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pss.setInt(1, empId);
 			rs = pss.executeQuery();
@@ -84,7 +82,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		List<Employee> empList = new ArrayList<Employee>();
 		try {
 			conn = getConnection();
-			pss = conn.prepareStatement("select EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME from EMPLOYEES",
+			pss = conn.prepareStatement("SELECT EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME FROM EMPLOYEES",
 					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = pss.executeQuery();
 			while (rs.next()) {
@@ -111,9 +109,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			conn = getConnection();
 			pss = conn
 					.prepareStatement(
-							"select EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME from EMPLOYEES where lower(EMPLOYEE_NAME) LIKE ?",
+							"SELECT EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME FROM EMPLOYEES WHERE lower" +
+									"(EMPLOYEE_NAME) LIKE ?",
 							ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			pss.setString(1, "%" + empName.toLowerCase(Util.LOCALE) + "%");
+			pss.setString(1, "%" + empName.toLowerCase(Constants.LOCALE) + "%");
 			rs = pss.executeQuery();
 			while (rs.next()) {
 				Employee emp = new Employee();
@@ -137,7 +136,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		int empCount = 0;
 		try {
 			conn = getConnection();
-			pss = conn.prepareStatement("select count(*) from EMPLOYEES", ResultSet.TYPE_SCROLL_INSENSITIVE,
+			pss = conn.prepareStatement("SELECT count(*) FROM EMPLOYEES", ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			rs = pss.executeQuery();
 			while (rs.next()) {
@@ -159,7 +158,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		int maxEmpId = 0;
 		try {
 			conn = getConnection();
-			pss = conn.prepareStatement("select max(EMPLOYEE_ID) as MAXEMPID from EMPLOYEES",
+			pss = conn.prepareStatement("SELECT max(EMPLOYEE_ID) AS MAXEMPID FROM EMPLOYEES",
 					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = pss.executeQuery();
 			while (rs.next()) {
@@ -168,7 +167,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			rs.close();
 			pss.close();
 			pss = conn.prepareStatement(
-					"insert into EMPLOYEES (EMPLOYEE_ID,EMPLOYEE_NAME, EMPLOYEE_SURNAME) values (?,?,?)",
+					"INSERT INTO EMPLOYEES (EMPLOYEE_ID,EMPLOYEE_NAME, EMPLOYEE_SURNAME) VALUES (?,?,?)",
 					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pss.setInt(1, maxEmpId + 1);
 			pss.setString(2, emp.getEmpName());
@@ -193,7 +192,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			pss = conn.prepareStatement("delete from EMPLOYEES where EMPLOYEE_ID = ?",
+			pss = conn.prepareStatement("DELETE FROM EMPLOYEES WHERE EMPLOYEE_ID = ?",
 					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pss.setInt(1, emp.getEmpId());
 			int countRows = pss.executeUpdate();
@@ -216,7 +215,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			pss = conn.prepareStatement("update EMPLOYEES set EMPLOYEE_NAME = ?, EMPLOYEE_SURNAME = ? where EMPLOYEE_ID = ?",
+			pss = conn.prepareStatement("UPDATE EMPLOYEES SET EMPLOYEE_NAME = ?, EMPLOYEE_SURNAME = ? WHERE " +
+							"EMPLOYEE_ID = ?",
 					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pss.setString(1, emp.getEmpName());
 			pss.setString(2, emp.getEmpSurname());

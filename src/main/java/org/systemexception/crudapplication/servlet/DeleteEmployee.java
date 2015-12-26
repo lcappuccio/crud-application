@@ -1,8 +1,6 @@
 /**
- *
  * @author leo
  * @date 07/03/2015 20:26
- *
  */
 /*
  * Copyright (C) 2015 leo
@@ -24,9 +22,9 @@ package org.systemexception.crudapplication.servlet;
 
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.pojo.Employees;
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.model.Employee;
+import org.systemexception.crudapplication.model.Employees;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
@@ -68,7 +66,7 @@ public class DeleteEmployee extends HttpServlet {
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
 		try {
-			out.println(Util.PAGE_HEADER);
+			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
@@ -85,13 +83,15 @@ public class DeleteEmployee extends HttpServlet {
 			out.println("</table>");
 			out.println("</form>");
 			out.println("</div>");
-			out.println(Util.PAGE_END);
+			out.println(Constants.PAGE_END);
 		} finally {
 			out.close();
 		}
 	}
 
-	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the
+	// code.">
+
 	/**
 	 * Handles the HTTP <code>GET</code> method.
 	 *

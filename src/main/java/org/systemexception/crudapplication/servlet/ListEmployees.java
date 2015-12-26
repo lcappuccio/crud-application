@@ -1,7 +1,7 @@
 package org.systemexception.crudapplication.servlet;
 
-import org.systemexception.crudapplication.pojo.Employees;
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.model.Employees;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- *
  * @author leo
  */
 public class ListEmployees extends HttpServlet {
@@ -22,10 +21,10 @@ public class ListEmployees extends HttpServlet {
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,7 +34,7 @@ public class ListEmployees extends HttpServlet {
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
 		try {
-			out.println(Util.PAGE_HEADER);
+			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
@@ -49,20 +48,22 @@ public class ListEmployees extends HttpServlet {
 			}
 			out.println("</table>");
 			out.println("</div>");
-			out.println(Util.PAGE_END);
+			out.println(Constants.PAGE_END);
 		} finally {
 			out.close();
 		}
 	}
 
-	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the
+	// code.">
+
 	/**
 	 * Handles the HTTP <code>GET</code> method.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -73,10 +74,10 @@ public class ListEmployees extends HttpServlet {
 	/**
 	 * Handles the HTTP <code>POST</code> method.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -2,8 +2,8 @@ package org.systemexception.crudapplication.servlet;
 
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
-import org.systemexception.crudapplication.pojo.Employee;
-import org.systemexception.crudapplication.pojo.Util;
+import org.systemexception.crudapplication.model.Employee;
+import org.systemexception.crudapplication.pojo.Constants;
 import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
@@ -15,7 +15,6 @@ import java.io.PrintWriter;
 import java.util.Random;
 
 /**
- *
  * @author leo
  */
 public class RandomEmployee extends HttpServlet {
@@ -26,10 +25,10 @@ public class RandomEmployee extends HttpServlet {
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,7 +36,7 @@ public class RandomEmployee extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		LOG.info("request from " + request.getRemoteAddr());
 		try {
-			out.println(Util.PAGE_HEADER);
+			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Random Employee</h2><hr>");
 			// Fetch random Employee details
@@ -46,20 +45,22 @@ public class RandomEmployee extends HttpServlet {
 			Employee employee = empDao.findById(randomId);
 			out.println("Employee: " + employee.getEmpName() + " " + employee.getEmpSurname());
 			out.println("</div>");
-			out.println(Util.PAGE_END);
+			out.println(Constants.PAGE_END);
 		} finally {
 			out.close();
 		}
 	}
 
-	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the
+	// code.">
+
 	/**
 	 * Handles the HTTP <code>GET</code> method.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -70,10 +71,10 @@ public class RandomEmployee extends HttpServlet {
 	/**
 	 * Handles the HTTP <code>POST</code> method.
 	 *
-	 * @param request servlet request
+	 * @param request  servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

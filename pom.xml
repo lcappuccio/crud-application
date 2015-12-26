@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.systemexception</groupId>
-    <artifactId>CrudApplication</artifactId>
+    <artifactId>crud-application</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
@@ -24,8 +24,8 @@
     <dependencies>
         <dependency>
             <groupId>com.github.lcappuccio</groupId>
-            <artifactId>CommonLogger</artifactId>
-            <version>1.0.1</version>
+            <artifactId>common-logger</artifactId>
+            <version>1.1.2</version>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -36,6 +36,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
@@ -53,11 +54,6 @@
             <version>1.9.13</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.10</version>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
@@ -68,43 +64,12 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.4.201502262128</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/BadWorld.*</exclude>
-                        <exclude>**/DeleteEmployee.*</exclude>
-                        <exclude>**/EmployeesJson.*</exclude>
-                        <exclude>**/HelloWorld.*</exclude>
-                        <exclude>**/InsertEmployee.*</exclude>
-                        <exclude>**/ListEmployees.*</exclude>
-                        <exclude>**/RandomEmployee.*</exclude>
-                        <exclude>**/UpdateEmployee.*</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
@@ -142,6 +107,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7.2</version>
+                <configuration>
+                    <workingDirectory>target</workingDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>

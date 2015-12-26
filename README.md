@@ -1,6 +1,11 @@
 # CrudApplication 
 A basic crud application example
 
+**Master**
+
+[![codecov.io](https://codecov.io/github/lcappuccio/crud-application/coverage.svg?branch=master)](https://codecov.io/github/lcappuccio/crud-application?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/92b25f0e94fb4704b87af54a39a0d08b)](https://www.codacy.com/app/leo_4/crud-application)
+
 ## Installation
 1. Create the necessary database table on your favourite RDBMS (see script.sql)
 2. Download and change JDBC URL, username and password in org.systemexception.crudapplication.impl.EmployeeDaoImpl

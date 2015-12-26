@@ -3,16 +3,17 @@ package org.systemexception.crudapplication.pojo;
 import java.util.Locale;
 
 /**
- *
  * @author leo
  * @date Feb 19, 2015 8:34:31 PM
  */
-public class Util {
+public class Constants {
 
-	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" rel=\"stylesheet\">";
+	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" " +
+			"rel=\"stylesheet\">";
 	public static final String JQUERY_PATH = "<script src=\"resources/js/jquery-1.11.3.min.js\"></script>";
 	public static final String UPDATE_EMPLOYEE_JS_PATH = "<script src=\"resources/js/updateEmployee.js\"></script>";
-	public static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"resources/images/favicon.png\">";
+	public static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" " +
+			"href=\"resources/images/favicon.png\">";
 
 	public static final String PAGE_HEADER = "<html>"
 			+ "<head>"
@@ -27,7 +28,8 @@ public class Util {
 			+ "<body>\n"
 			+ "<nav class=\"navbar navbar-inverse\" role=\"navigation\">"
 			+ "  <div class=\"navbar-header\">\n"
-			+ "    <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#appnavbar\">\n"
+			+ "    <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" " +
+			"data-target=\"#appnavbar\">\n"
 			+ "      <span class=\"sr-only\">Toggle navigation</span>\n"
 			+ "      <span class=\"icon-bar\"></span>\n"
 			+ "      <span class=\"icon-bar\"></span>\n"

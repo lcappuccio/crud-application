@@ -1,13 +1,15 @@
 package org.systemexception.crudapplication.pojo;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.systemexception.crudapplication.exception.PojoMapperException;
+import org.systemexception.crudapplication.model.Employee;
+import org.systemexception.crudapplication.model.Employees;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.systemexception.crudapplication.exception.PojoMapperException;
 
 /**
- *
  * @author leo
  * @date Feb 18, 2015 12:33:50 AM
  */
