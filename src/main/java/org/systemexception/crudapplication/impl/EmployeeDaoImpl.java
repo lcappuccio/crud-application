@@ -38,6 +38,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		 * for testing also ("jdbc:mariadb://192.168.1.3:3306/test");
 		 * for production use ("jdbc:mysql://localhost:3306/test");
 		 * for production use ("jdbc:mysql://localhost:3306/test");
+		 * dataSource.setUsername("test");
+		 * dataSource.setPassword("test");
+		 * for travis use:
+		 * dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
+		 * dataSource.setUsername("travis");
+		 * dataSource.setPassword(null);
 		 */
 		dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
 		dataSource.setUsername("travis");
