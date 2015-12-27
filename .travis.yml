@@ -1,0 +1,28 @@
+sudo: false
+language: java
+
+services:
+  - mysql
+
+jdk:
+  - oraclejdk8
+
+before_script:
+  - pip install --user codecov
+  - mysql -e 'create database myapp_test;'
+  - sh -c "mysql -e 'CREATE TABLE myapp_test.EMPLOYEES (
+                EMPLOYEE_ID      INT(11)     NOT NULL,
+                EMPLOYEE_NAME    VARCHAR(25) NOT NULL,
+                EMPLOYEE_SURNAME VARCHAR(25) NOT NULL,
+                PRIMARY KEY (EMPLOYEE_ID)
+              );'"
+  - sh -c "mysql -e 'CREATE TABLE myapp_test.EMPLOYEES_SALARY (
+                       EMPLOYEE_ID DECIMAL(10, 0) NOT NULL,
+                       SALARY      FLOAT          NULL
+                     );'"
+  - sh -c "mysql -e 'INSERT INTO myapp_test.EMPLOYEES
+    (EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME ) VALUES (0, \"Homer\", \"Simpson\");'"
+  - sh -c "mysql -e 'commit;'"
+
+after_success:
+  - codecov

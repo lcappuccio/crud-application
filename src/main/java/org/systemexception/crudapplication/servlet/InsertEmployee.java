@@ -1,10 +1,11 @@
 package org.systemexception.crudapplication.servlet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.pojo.Constants;
-import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ import java.io.PrintWriter;
  */
 public class InsertEmployee extends HttpServlet {
 
-	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(InsertEmployee.class);
+	private final Logger LOG = LoggerFactory.getLogger(InsertEmployee.class);
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
 	/**
