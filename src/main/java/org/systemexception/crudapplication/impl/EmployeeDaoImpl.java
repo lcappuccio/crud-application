@@ -293,7 +293,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			pss = conn.prepareStatement("terribly wrong query", ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			rs = pss.executeQuery();
-			int countRows = pss.executeUpdate();
+			pss.executeUpdate();
 		} catch (SQLException e) {
 			exceptionHandler(e);
 			return (true);
