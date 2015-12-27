@@ -9,9 +9,8 @@ function handleClick() {
     var firstName = $(this).closest("tr").find("td:nth-child(2)").text();
     var lastName = $(this).closest("tr").find("td:nth-child(3)").text();
     //console.log("Update " + empId + " to :" + firstName + ", " + lastName);
-    $.post("UpdateEmployee",
-        {"empID": empId, "firstName": firstName, "lastName": lastName},
-        function (data) {
+    $.post("UpdateEmployee", {"empID": empId, "firstName": firstName, "lastName": lastName},
+        function () {
         }, "json");
 }
 
