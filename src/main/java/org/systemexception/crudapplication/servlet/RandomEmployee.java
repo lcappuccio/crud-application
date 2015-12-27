@@ -1,10 +1,11 @@
 package org.systemexception.crudapplication.servlet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.pojo.Constants;
-import org.systemexception.logger.impl.LoggerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ import java.util.Random;
  */
 public class RandomEmployee extends HttpServlet {
 
-	private static final org.systemexception.logger.api.Logger LOG = LoggerImpl.getFor(RandomEmployee.class);
+	private final Logger LOG = LoggerFactory.getLogger(RandomEmployee.class);
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
 	/**

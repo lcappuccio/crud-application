@@ -1,8 +1,6 @@
 /**
- *
  * @author leo
  * @date 20/02/2015 20:05
- *
  */
 package org.systemexception.crudapplication.test;
 
@@ -21,7 +19,7 @@ import java.util.logging.Logger;
 
 public class TestEmployeeDaoImpl extends EmployeeDaoImpl {
 
-	private static final Logger LOG = Logger.getLogger(EmployeeDaoImpl.class.getCanonicalName());
+	private final Logger LOG = Logger.getLogger(EmployeeDaoImpl.class.getCanonicalName());
 	private final HikariDataSource dataSource = new HikariDataSource();
 	private Connection conn;
 
@@ -33,12 +31,12 @@ public class TestEmployeeDaoImpl extends EmployeeDaoImpl {
 	 */
 	private Connection getConnection() throws SQLException {
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-		dataSource.setJdbcUrl("jdbc:mariadb://192.168.1.3:3306/test");
-		dataSource.setUsername("test");
-		dataSource.setPassword("test");
+		dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
+		dataSource.setUsername("travis");
+		dataSource.setPassword(null);
 		dataSource.setConnectionTimeout(5000);
-		dataSource.setIdleTimeout(300000);
-		dataSource.setMaximumPoolSize(8);
+		dataSource.setIdleTimeout(10000);
+		dataSource.setMaximumPoolSize(2);
 		dataSource.setAutoCommit(false);
 		conn = dataSource.getConnection();
 		return (conn);
@@ -51,6 +49,7 @@ public class TestEmployeeDaoImpl extends EmployeeDaoImpl {
 	 * @return
 	 */
 	public boolean insertEmployeeWithId(Employee emp) {
+		LOG.info("Insert employee");
 		boolean operationResult = false;
 		PreparedStatement pss = null;
 		ResultSet rs = null;

@@ -12,7 +12,6 @@ import org.systemexception.crudapplication.pojo.PojoMapper;
 import static org.junit.Assert.assertTrue;
 
 /**
- *
  * @author leo
  * @date Feb 18, 2015 12:33:37 AM
  */
@@ -46,9 +45,8 @@ public class TestPojoMapper {
 		System.out.println(sut.employeesToJson(employees));
 	}
 
-	@Test(expected = org.systemexception.crudapplication.exception.PojoMapperException.class)
+	@Test(expected = PojoMapperException.class)
 	public void testException() throws PojoMapperException {
 		Employee empJson = sut.jsonToEmployee("{\"empOID\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
-
 	}
 }
