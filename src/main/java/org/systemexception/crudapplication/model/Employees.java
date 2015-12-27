@@ -25,35 +25,8 @@ public class Employees {
 		return empList;
 	}
 
-	public void setEmpList(List<Employee> empList) {
-		this.empList = empList;
-	}
-
 	public int countEmployees() {
 		return empDao.countEmployees();
-	}
-
-	@Override
-	public int hashCode() {
-		int hash = 7;
-		hash = 71 * hash + (this.empList != null ? this.empList.hashCode() : 0);
-		hash = 71 * hash + (this.empDao != null ? this.empDao.hashCode() : 0);
-		return hash;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final Employees other = (Employees) obj;
-		if (this.empList != other.empList && (this.empList == null || !this.empList.equals(other.empList))) {
-			return false;
-		}
-		return !(this.empDao != other.empDao && (this.empDao == null || !this.empDao.equals(other.empDao)));
 	}
 
 }
