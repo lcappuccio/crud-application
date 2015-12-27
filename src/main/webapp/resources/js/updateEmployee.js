@@ -1,13 +1,9 @@
 /**
  * Created by leo on 31/05/15.
  */
-$(document).ready(function () {
-    $("button").on('click', handleClick);
-});
-
 function handleClick() {
-    $(this).siblings().on('click', handleClick);
-    $(this).off('click');
+    $(this).siblings().on("click", handleClick);
+    $(this).off("click");
     //console.log($(this).attr("value"));
     var empId = $(this).closest("tr").find("td:nth-child(1)").text();
     var firstName = $(this).closest("tr").find("td:nth-child(2)").text();
@@ -18,3 +14,7 @@ function handleClick() {
         function (data) {
         }, "json");
 }
+
+$(document).ready(function () {
+	$("button").on("click", handleClick);
+});
