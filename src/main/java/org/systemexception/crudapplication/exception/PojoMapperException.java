@@ -6,9 +6,6 @@ package org.systemexception.crudapplication.exception;
  */
 public class PojoMapperException extends Exception {
 
-	public PojoMapperException() {
-	}
-
 	/**
 	 * PojoMapper throwable
 	 *
@@ -16,15 +13,5 @@ public class PojoMapperException extends Exception {
 	 */
 	public PojoMapperException(String msg) {
 		super(msg);
-	}
-
-	/**
-	 * PojoMapper throwable
-	 *
-	 * @param message
-	 * @param throwable
-	 */
-	public PojoMapperException(String message, Throwable throwable) {
-		super(message, throwable);
 	}
 }

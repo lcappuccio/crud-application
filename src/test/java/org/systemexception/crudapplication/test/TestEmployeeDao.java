@@ -3,6 +3,7 @@ package org.systemexception.crudapplication.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 
 import static junit.framework.Assert.assertEquals;
@@ -14,12 +15,12 @@ import static junit.framework.Assert.assertTrue;
  */
 public class TestEmployeeDao {
 
-	private TestEmployeeDaoImpl sut;
+	private EmployeeDaoImpl sut;
 	private Employee employee;
 
 	@Before
 	public void setUp() {
-		sut = new TestEmployeeDaoImpl();
+		sut = new EmployeeDaoImpl();
 		employee = new Employee(999, "Test", "Test");
 	}
 
@@ -49,7 +50,8 @@ public class TestEmployeeDao {
 	@Test
 	public void test_1_EmployeeDaoInsert() {
 		assertTrue(sut.insertEmployeeWithId(employee));
-		sut.deleteEmployee(employee);
+		assertEquals(employee, sut.findById(employee.getEmpId()));
+		assertEquals(employee.hashCode(), sut.findById(employee.getEmpId()).hashCode());
 	}
 
 	/**
@@ -72,6 +74,7 @@ public class TestEmployeeDao {
 		sut.updateEmployee(employee);
 		Employee employeeUpdated = sut.findById(employee.getEmpId());
 		assertEquals(employeeUpdated, employee);
+		assertEquals(employeeUpdated.hashCode(), sut.findById(employee.getEmpId()).hashCode());
 	}
 
 	@Test

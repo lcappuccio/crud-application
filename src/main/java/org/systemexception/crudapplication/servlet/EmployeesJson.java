@@ -31,7 +31,7 @@ public class EmployeesJson extends HttpServlet {
 	 * @throws IOException                                                       if an I/O error occurs
 	 * @throws org.systemexception.crudapplication.exception.PojoMapperException
 	 */
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	public void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, PojoMapperException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -74,33 +74,5 @@ public class EmployeesJson extends HttpServlet {
 			LOG.error("Error in servlet " + this.getServletInfo(), ex);
 		}
 	}
-
-	/**
-	 * Handles the HTTP <code>POST</code> method.
-	 *
-	 * @param request  servlet request
-	 * @param response servlet response
-	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException      if an I/O error occurs
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		try {
-			processRequest(request, response);
-		} catch (PojoMapperException ex) {
-			LOG.error("Error in servlet " + this.getServletInfo(), ex);
-		}
-	}
-
-	/**
-	 * Returns a short description of the servlet.
-	 *
-	 * @return a String containing servlet description
-	 */
-	@Override
-	public String getServletInfo() {
-		return "Short description";
-	}// </editor-fold>
 
 }
