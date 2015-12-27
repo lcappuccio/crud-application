@@ -326,6 +326,24 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 
+	public boolean cleanTests() {
+		boolean operationResult = false;
+		PreparedStatement pss = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pss = conn.prepareStatement("DELETE FROM EMPLOYEES WHERE EMPLOYEE_NAME = 'TEST'",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pss.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
+			exceptionHandler(e);
+		} finally {
+			closeAll(conn, pss, rs);
+		}
+		return operationResult;
+	}
+
 	/**
 	 * Exception handler to log file
 	 *
