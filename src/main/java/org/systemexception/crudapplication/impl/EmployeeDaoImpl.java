@@ -45,9 +45,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		 * dataSource.setUsername("travis");
 		 * dataSource.setPassword(null);
 		 */
-		dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
-		dataSource.setUsername("travis");
-		dataSource.setPassword(null);
+		/*
+		TEST
+		 */
+		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.3:3306/test");
+		dataSource.setUsername("test");
+		dataSource.setPassword("test");
+		/*
+		TRAVIS
+		 */
+//		dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
+//		dataSource.setUsername("travis");
+//		dataSource.setPassword(null);
 		dataSource.setConnectionTimeout(5000);
 		dataSource.setIdleTimeout(10000);
 		dataSource.setMaximumPoolSize(4);
@@ -191,6 +200,37 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return operationResult;
 	}
 
+	/**
+	 * Insert employee with a given ID, used in test
+	 *
+	 * @param emp
+	 * @return
+	 */
+	public boolean insertEmployeeWithId(Employee emp) {
+		boolean operationResult = false;
+		PreparedStatement pss = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pss = conn.prepareStatement(
+					"insert into EMPLOYEES (EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME) values (?,?,?)",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			pss.setInt(1, emp.getEmpId());
+			pss.setString(2, emp.getEmpName());
+			pss.setString(3, emp.getEmpSurname());
+			int countRows = pss.executeUpdate();
+			if (countRows > 0) {
+				operationResult = true;
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			exceptionHandler(e);
+		} finally {
+			closeAll(conn, pss, rs);
+		}
+		return operationResult;
+	}
+
 	@Override
 	public boolean deleteEmployee(Employee emp) {
 		boolean operationResult = false;
@@ -238,6 +278,30 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			closeAll(conn, pss, rs);
 		}
 		return operationResult;
+	}
+
+	/**
+	 * Test that exception handler
+	 *
+	 * @return
+	 */
+	public boolean testBadQuery() {
+		PreparedStatement pss = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pss = conn.prepareStatement(
+					"terribly wrong query",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			rs = pss.executeQuery();
+			int countRows = pss.executeUpdate();
+		} catch (SQLException e) {
+			exceptionHandler(e);
+			return (true);
+		} finally {
+			closeAll(conn, pss, rs);
+		}
+		return (false);
 	}
 
 	/**
