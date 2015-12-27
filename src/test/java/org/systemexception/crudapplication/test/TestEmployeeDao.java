@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
@@ -54,11 +56,19 @@ public class TestEmployeeDao {
 		assertEquals(employee.hashCode(), sut.findById(employee.getEmpId()).hashCode());
 	}
 
+	@Test
+	public void test_2_EmployeeDaoAutoInsert() {
+		assertTrue(sut.insertEmployee(employee));
+		List<Employee> byName = sut.findByName(employee.getEmpName());
+		assert(byName.size() > 0);
+		sut.cleanTests();
+	}
+
 	/**
 	 * tests are run in consecutive order
 	 */
 	@Test
-	public void test_2_EmployeeDaoDelete() {
+	public void test_3_EmployeeDaoDelete() {
 		sut.insertEmployeeWithId(employee);
 		assertTrue(sut.deleteEmployee(employee));
 	}
@@ -67,7 +77,7 @@ public class TestEmployeeDao {
 	 * tests are run in consecutive order
 	 */
 	@Test
-	public void test_3_EmployeeDaoUpdate() {
+	public void test_4_EmployeeDaoUpdate() {
 		sut.insertEmployeeWithId(employee);
 		employee.setEmpName("TestNameUpdate");
 		employee.setEmpSurname("TestNameUpdate");
