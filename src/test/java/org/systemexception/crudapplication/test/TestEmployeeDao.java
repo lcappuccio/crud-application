@@ -50,7 +50,8 @@ public class TestEmployeeDao {
 	@Test
 	public void test_1_EmployeeDaoInsert() {
 		assertTrue(sut.insertEmployeeWithId(employee));
-		sut.deleteEmployee(employee);
+		assertEquals(employee, sut.findById(employee.getEmpId()));
+		assertEquals(employee.hashCode(), sut.findById(employee.getEmpId()).hashCode());
 	}
 
 	/**
