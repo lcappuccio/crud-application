@@ -8,6 +8,7 @@ A basic crud application example
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/92b25f0e94fb4704b87af54a39a0d08b)](https://www.codacy.com/app/leo_4/crud-application)
 
 **Develop**
+
 [![Build Status](https://travis-ci.org/lcappuccio/crud-application.svg?branch=develop)](https://travis-ci.org/lcappuccio/crud-application)
 [![codecov.io](https://codecov.io/github/lcappuccio/crud-application/coverage.svg?branch=develop)](https://codecov.io/github/lcappuccio/crud-application?branch=develop)
 
