@@ -74,6 +74,7 @@ public class TestEmployeeDao {
 		sut.updateEmployee(employee);
 		Employee employeeUpdated = sut.findById(employee.getEmpId());
 		assertEquals(employeeUpdated, employee);
+		assertEquals(employeeUpdated.hashCode(), sut.findById(employee.getEmpId()).hashCode());
 	}
 
 	@Test
