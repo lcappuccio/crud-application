@@ -67,7 +67,7 @@ public class UpdateEmployee extends HttpServlet {
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
 		try {
-			out.println(Constants.PAGE_HEADER);
+			out.println(Constants.PAGE_HEADER_UPDATE_EMPLOYEE);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
