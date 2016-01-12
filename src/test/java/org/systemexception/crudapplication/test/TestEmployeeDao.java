@@ -86,9 +86,4 @@ public class TestEmployeeDao {
 		assertEquals(employeeUpdated, employee);
 		assertEquals(employeeUpdated.hashCode(), sut.findById(employee.getEmpId()).hashCode());
 	}
-
-	@Test
-	public void test_bad_query() {
-		assertTrue(sut.testBadQuery());
-	}
 }

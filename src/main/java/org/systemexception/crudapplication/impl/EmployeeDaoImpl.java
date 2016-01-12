@@ -281,29 +281,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	/**
-	 * Test that exception handler
-	 *
-	 * @return
-	 */
-	public boolean testBadQuery() {
-		PreparedStatement pss = null;
-		ResultSet rs = null;
-		try {
-			conn = getConnection();
-			pss = conn.prepareStatement("terribly wrong query", ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
-			rs = pss.executeQuery();
-			pss.executeUpdate();
-		} catch (SQLException e) {
-			exceptionHandler(e);
-			return (true);
-		} finally {
-			closeAll(conn, pss, rs);
-		}
-		return (false);
-	}
-
-	/**
 	 * Quietly close all database resources
 	 *
 	 * @param conn
