@@ -48,8 +48,8 @@ public class InsertEmployee extends HttpServlet {
 
 			out.println("<div class=\"form-group\">"
 					+ "<label class=\"sr-only\" for=\"employeeSurname\">Surname</label>"
-					+ "<input type=\"text\" class=\"form-control\" id=\"employeeSurname\" placeholder=\"Enter employee" +
-					" name\" name=\"employeeSurname\"></div>");
+					+ "<input type=\"text\" class=\"form-control\" id=\"employeeSurname\" placeholder=\"Enter " +
+					"employee name\" name=\"employeeSurname\"></div>");
 
 			out.println("<button type=\"submit\" class=\"btn btn-default\">Submit</button>");
 
