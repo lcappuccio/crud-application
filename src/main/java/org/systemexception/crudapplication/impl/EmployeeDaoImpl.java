@@ -100,13 +100,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			pss = conn.prepareStatement("SELECT EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME FROM EMPLOYEES",
 					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = pss.executeQuery();
-			while (rs.next()) {
-				Employee emp = new Employee();
-				emp.setEmpId(rs.getInt("EMPLOYEE_ID"));
-				emp.setEmpName(rs.getString("EMPLOYEE_NAME"));
-				emp.setEmpSurname(rs.getString("EMPLOYEE_SURNAME"));
-				empList.add(emp);
-			}
+			empList = resultSetToEmployeeList(rs);
 		} catch (SQLException e) {
 			exceptionHandler(e);
 		} finally {
@@ -119,7 +113,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public List<Employee> findByName(String empName) {
 		PreparedStatement pss = null;
 		ResultSet rs = null;
-		List<Employee> empList = new ArrayList<Employee>();
+		List<Employee> empList = new ArrayList<>();
 		try {
 			conn = getConnection();
 			pss = conn
@@ -129,13 +123,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 							ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pss.setString(1, "%" + empName.toLowerCase(Constants.LOCALE) + "%");
 			rs = pss.executeQuery();
-			while (rs.next()) {
-				Employee emp = new Employee();
-				emp.setEmpId(rs.getInt("EMPLOYEE_ID"));
-				emp.setEmpName(rs.getString("EMPLOYEE_NAME"));
-				emp.setEmpSurname(rs.getString("EMPLOYEE_SURNAME"));
-				empList.add(emp);
-			}
+			empList = resultSetToEmployeeList(rs);
 		} catch (SQLException e) {
 			exceptionHandler(e);
 		} finally {
@@ -281,29 +269,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	/**
-	 * Test that exception handler
-	 *
-	 * @return
-	 */
-	public boolean testBadQuery() {
-		PreparedStatement pss = null;
-		ResultSet rs = null;
-		try {
-			conn = getConnection();
-			pss = conn.prepareStatement("terribly wrong query", ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
-			rs = pss.executeQuery();
-			pss.executeUpdate();
-		} catch (SQLException e) {
-			exceptionHandler(e);
-			return (true);
-		} finally {
-			closeAll(conn, pss, rs);
-		}
-		return (false);
-	}
-
-	/**
 	 * Quietly close all database resources
 	 *
 	 * @param conn
@@ -342,6 +307,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			closeAll(conn, pss, rs);
 		}
 		return operationResult;
+	}
+
+	private List<Employee> resultSetToEmployeeList(ResultSet rs) throws SQLException {
+		List<Employee> empList = new ArrayList<>();
+		while (rs.next()) {
+			Employee emp = new Employee();
+			emp.setEmpId(rs.getInt("EMPLOYEE_ID"));
+			emp.setEmpName(rs.getString("EMPLOYEE_NAME"));
+			emp.setEmpSurname(rs.getString("EMPLOYEE_SURNAME"));
+			empList.add(emp);
+		}
+		return empList;
 	}
 
 	/**
