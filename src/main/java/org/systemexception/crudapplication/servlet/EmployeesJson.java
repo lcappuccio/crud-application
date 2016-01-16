@@ -1,7 +1,7 @@
 package org.systemexception.crudapplication.servlet;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.systemexception.crudapplication.exception.PojoMapperException;
 import org.systemexception.crudapplication.model.Employees;
 import org.systemexception.crudapplication.pojo.PojoMapper;
@@ -19,7 +19,7 @@ import java.io.PrintWriter;
  */
 public class EmployeesJson extends HttpServlet {
 
-	private final Logger LOG = LoggerFactory.getLogger(EmployeesJson.class);
+	private static final Logger LOG = LogManager.getLogger(EmployeesJson.class);
 	private final PojoMapper pojoMapper = new PojoMapper();
 
 	/**

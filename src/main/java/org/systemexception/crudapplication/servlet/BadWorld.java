@@ -1,7 +1,7 @@
 package org.systemexception.crudapplication.servlet;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.systemexception.crudapplication.pojo.Constants;
 
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class BadWorld extends HttpServlet {
 
-	private final Logger LOG = LoggerFactory.getLogger(BadWorld.class);
+	private static final Logger LOG = LogManager.getLogger(BadWorld.class);
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

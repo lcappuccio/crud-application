@@ -1,7 +1,7 @@
 package org.systemexception.crudapplication.servlet;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.systemexception.crudapplication.model.Employees;
 import org.systemexception.crudapplication.pojo.Constants;
 
@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  */
 public class ListEmployees extends HttpServlet {
 
-	private final Logger LOG = LoggerFactory.getLogger(ListEmployees.class);
+	private static final Logger LOG = LogManager.getLogger(ListEmployees.class);
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
