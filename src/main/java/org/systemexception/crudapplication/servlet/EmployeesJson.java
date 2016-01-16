@@ -31,7 +31,7 @@ public class EmployeesJson extends HttpServlet {
 	 * @throws IOException                                                       if an I/O error occurs
 	 * @throws org.systemexception.crudapplication.exception.PojoMapperException
 	 */
-	public void processRequest(HttpServletRequest request, HttpServletResponse response)
+	public void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException, PojoMapperException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -66,7 +66,7 @@ public class EmployeesJson extends HttpServlet {
 	 * @throws IOException      if an I/O error occurs
 	 */
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			processRequest(request, response);
