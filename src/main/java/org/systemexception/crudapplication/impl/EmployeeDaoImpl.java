@@ -5,8 +5,8 @@
 package org.systemexception.crudapplication.impl;
 
 import com.zaxxer.hikari.HikariDataSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.pojo.Constants;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
-	private static final Logger LOG = LoggerFactory.getLogger(EmployeeDaoImpl.class);
+	private static final Logger LOG = LogManager.getLogger(EmployeeDaoImpl.class);
 	private final HikariDataSource dataSource = new HikariDataSource();
 	private Connection conn;
 
