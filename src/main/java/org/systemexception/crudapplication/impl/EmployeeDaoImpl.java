@@ -34,8 +34,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
 		/*
 		 * TODO IP address, schema, user and password should be in external properties
-		 * for testing use ("jdbc:mysql://192.168.1.3:3306/test");
-		 * for testing also ("jdbc:mariadb://192.168.1.3:3306/test");
+		 * for testing use ("jdbc:mysql://192.168.1.26:3306/test");
+		 * for testing also ("jdbc:mariadb://192.168.1.26:3306/test");
 		 * for production use ("jdbc:mysql://localhost:3306/test");
 		 * for production use ("jdbc:mysql://localhost:3306/test");
 		 * dataSource.setUsername("test");
@@ -48,7 +48,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		/*
 		TEST
 		 */
-//		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.3:3306/test");
+//		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.26:3306/test");
 //		dataSource.setUsername("test");
 //		dataSource.setPassword("test");
 		/*
