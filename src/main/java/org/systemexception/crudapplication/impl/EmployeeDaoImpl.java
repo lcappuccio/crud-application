@@ -57,6 +57,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
 		dataSource.setUsername("travis");
 		dataSource.setPassword(null);
+		/*
+		STANDARD SETTINGS
+		 */
 		dataSource.setConnectionTimeout(5000);
 		dataSource.setIdleTimeout(10000);
 		dataSource.setMaximumPoolSize(4);
