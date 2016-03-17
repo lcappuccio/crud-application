@@ -8,11 +8,16 @@ import java.util.Locale;
  */
 public class Constants {
 
-	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" " +
-			"rel=\"stylesheet\">";
-	public static final String JQUERY_PATH = "<script src=\"resources/js/jquery-1.11.3.min.js\"></script>";
-	public static final String UPDATE_EMPLOYEE_JS_PATH = "<script src=\"resources/js/updateEmployee.js\"></script>";
-	public static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" " +
+	private static final String BOOTSTRAP_CSS_PATH = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn" +
+			".com/bootstrap/3.3.6/css/bootstrap.min.css\">";
+	private static final String BOOTSTRAP_CSS_THEME = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn" +
+			".com/bootstrap/3.3.6/css/bootstrap-theme.min.css crossorigin=\"anonymous\">";
+	private static final String BOOTSTRAP_JS_PATH = "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3" +
+			".6/js/bootstrap.min.js\"></script>";
+	private static final String JQUERY_PATH = "<script   src=\"https://code.jquery.com/jquery-1.12.2.min.js\" " +
+			"crossorigin=\"anonymous\"></script>";
+	private static final String UPDATE_EMPLOYEE_JS_PATH = "<script src=\"resources/js/updateEmployee.js\"></script>";
+	private static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" " +
 			"href=\"resources/images/favicon.png\">";
 
 	public static final String PAGE_HEADER = "<html>"
@@ -20,7 +25,9 @@ public class Constants {
 			+ " <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
 			+ " <title>Basic Crud Application</title>\n"
 			+ BOOTSTRAP_CSS_PATH + "\n"
+			+ BOOTSTRAP_CSS_THEME + "\n"
 			+ JQUERY_PATH + "\n"
+			+ BOOTSTRAP_JS_PATH + "\n"
 			+ FAVICON_PATH + "\n"
 			+ " </head>\n"
 			// Body starts here
@@ -99,6 +106,9 @@ public class Constants {
 			+ "</nav>";
 
 	public static final String PAGE_END = "<hr></body></html>";
+
+	public static final String TABLE_HEAD = "<thead class=\"thead-inverse\">" +
+			"<tr><th>EmployeeID</th><th>Name</th><th>Last Name</th></tr></thead><tbody>";
 
 	public static final Locale LOCALE = Locale.getDefault();
 

@@ -2,9 +2,9 @@ package org.systemexception.crudapplication.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.systemexception.crudapplication.api.EmployeeDao;
+import org.systemexception.crudapplication.dao.EmployeeDao;
 import org.systemexception.crudapplication.exception.PojoMapperException;
-import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.model.Employees;
 import org.systemexception.crudapplication.pojo.PojoMapper;
@@ -47,6 +47,6 @@ public class TestPojoMapper {
 
 	@Test(expected = PojoMapperException.class)
 	public void testException() throws PojoMapperException {
-		Employee empJson = sut.jsonToEmployee("{\"empOID\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
+		sut.jsonToEmployee("{\"empOID\":1,\"empName\":\"Homer\",\"empSurname\":\"Simpson\"}");
 	}
 }

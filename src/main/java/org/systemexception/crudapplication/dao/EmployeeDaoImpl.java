@@ -2,12 +2,11 @@
  * @author leo
  * @date 24/02/2015 22:59
  */
-package org.systemexception.crudapplication.impl;
+package org.systemexception.crudapplication.dao;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.pojo.Constants;
 
@@ -34,8 +33,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
 		/*
 		 * TODO IP address, schema, user and password should be in external properties
-		 * for testing use ("jdbc:mysql://192.168.1.3:3306/test");
-		 * for testing also ("jdbc:mariadb://192.168.1.3:3306/test");
+		 * for testing use ("jdbc:mysql://192.168.1.26:3306/test");
+		 * for testing also ("jdbc:mariadb://192.168.1.26:3306/test");
 		 * for production use ("jdbc:mysql://localhost:3306/test");
 		 * for production use ("jdbc:mysql://localhost:3306/test");
 		 * dataSource.setUsername("test");
@@ -48,7 +47,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		/*
 		TEST
 		 */
-//		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.3:3306/test");
+//		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.26:3306/test");
 //		dataSource.setUsername("test");
 //		dataSource.setPassword("test");
 		/*
@@ -57,6 +56,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
 		dataSource.setUsername("travis");
 		dataSource.setPassword(null);
+		/*
+		STANDARD SETTINGS
+		 */
 		dataSource.setConnectionTimeout(5000);
 		dataSource.setIdleTimeout(10000);
 		dataSource.setMaximumPoolSize(4);
@@ -94,7 +96,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public List<Employee> getAllEmployees() {
 		PreparedStatement pss = null;
 		ResultSet rs = null;
-		List<Employee> empList = new ArrayList<Employee>();
+		List<Employee> empList = new ArrayList<>();
 		try {
 			conn = getConnection();
 			pss = conn.prepareStatement("SELECT EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME FROM EMPLOYEES",
@@ -243,8 +245,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public boolean updateEmployee(Employee emp) {
-		boolean operationResult = false;
+	public void updateEmployee(Employee emp) {
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		try {
@@ -257,7 +258,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			pss.setInt(3, emp.getEmpId());
 			int countRows = pss.executeUpdate();
 			if (countRows > 0) {
-				operationResult = true;
 				conn.commit();
 			}
 		} catch (SQLException e) {
@@ -265,7 +265,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		} finally {
 			closeAll(conn, pss, rs);
 		}
-		return operationResult;
 	}
 
 	/**
@@ -291,8 +290,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 
-	public boolean cleanTests() {
-		boolean operationResult = false;
+	public void cleanTests() {
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		try {
@@ -306,7 +304,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		} finally {
 			closeAll(conn, pss, rs);
 		}
-		return operationResult;
 	}
 
 	private List<Employee> resultSetToEmployeeList(ResultSet rs) throws SQLException {

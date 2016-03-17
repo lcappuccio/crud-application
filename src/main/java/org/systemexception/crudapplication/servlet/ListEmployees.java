@@ -27,31 +27,28 @@ public class ListEmployees extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
 	 */
-	public void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
-			out.println("<table class=\"table table-hover\">");
-			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
+			out.println("<table class=\"table table-striped\">");
+			out.println(Constants.TABLE_HEAD);
 			for (int i = 0; i < employees.countEmployees(); i++) {
 				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
 				String empLastName = employees.getEmpList().get(i).getEmpSurname();
 				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td></tr>");
 			}
-			out.println("</table>");
+			out.println("</tbody></table>");
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
-		} finally {
-			out.close();
 		}
 	}
 

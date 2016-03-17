@@ -31,15 +31,14 @@ public class EmployeesJson extends HttpServlet {
 	 * @throws IOException                                                       if an I/O error occurs
 	 * @throws org.systemexception.crudapplication.exception.PojoMapperException
 	 */
-	public void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException, PojoMapperException {
+	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException, PojoMapperException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
 		String employeesJson = pojoMapper.employeesToJson(employees);
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
@@ -49,8 +48,6 @@ public class EmployeesJson extends HttpServlet {
 			out.println(employeesJson);
 			out.println("</body>");
 			out.println("</html>");
-		} finally {
-			out.close();
 		}
 	}
 

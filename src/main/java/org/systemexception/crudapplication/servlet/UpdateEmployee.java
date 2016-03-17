@@ -22,8 +22,8 @@ package org.systemexception.crudapplication.servlet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.systemexception.crudapplication.api.EmployeeDao;
-import org.systemexception.crudapplication.impl.EmployeeDaoImpl;
+import org.systemexception.crudapplication.dao.EmployeeDao;
+import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.model.Employees;
 import org.systemexception.crudapplication.pojo.Constants;
@@ -59,21 +59,20 @@ public class UpdateEmployee extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
 	 */
-	public void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER_UPDATE_EMPLOYEE);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
 			out.println("<form class=\"form-update\">");
 			out.println("<table class=\"table table-hover\" id=\"updateEmployeeTable\">");
-			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th><th></th></tr>");
+			out.println(Constants.TABLE_HEAD);
 			for (int i = 0; i < employees.countEmployees(); i++) {
 				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
@@ -87,8 +86,6 @@ public class UpdateEmployee extends HttpServlet {
 			out.println("</form>");
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
-		} finally {
-			out.close();
 		}
 	}
 

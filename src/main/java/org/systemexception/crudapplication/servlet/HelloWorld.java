@@ -26,20 +26,17 @@ public class HelloWorld extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
 	 */
-	public void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		LOG.info("request to " + this.getClass().getCanonicalName());
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Servlet HelloWorld at " + request.getContextPath() + "</h2><hr>");
 			out.println("Your IP: " + request.getRemoteAddr());
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
-		} finally {
-			out.close();
 		}
 	}
 
