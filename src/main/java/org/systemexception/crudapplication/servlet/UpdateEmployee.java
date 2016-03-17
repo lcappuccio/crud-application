@@ -62,11 +62,10 @@ public class UpdateEmployee extends HttpServlet {
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		Employees employees = new Employees();
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER_UPDATE_EMPLOYEE);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Update Employees</h2><hr>");
@@ -87,8 +86,6 @@ public class UpdateEmployee extends HttpServlet {
 			out.println("</form>");
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
-		} finally {
-			out.close();
 		}
 	}
 

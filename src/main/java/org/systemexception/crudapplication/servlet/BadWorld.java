@@ -30,19 +30,16 @@ public class BadWorld extends HttpServlet {
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
 		LOG.info("request from " + request.getRemoteAddr());
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Bad World!</h2><hr>");
 			out.println("Guess this: " + rndStr);
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
-		} finally {
-			out.close();
 		}
 	}
 

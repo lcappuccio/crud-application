@@ -34,9 +34,8 @@ public class RandomEmployee extends HttpServlet {
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		LOG.info("request from " + request.getRemoteAddr());
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Random Employee</h2><hr>");
@@ -47,8 +46,6 @@ public class RandomEmployee extends HttpServlet {
 			out.println("Employee: " + employee.getEmpName() + " " + employee.getEmpSurname());
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
-		} finally {
-			out.close();
 		}
 	}
 
