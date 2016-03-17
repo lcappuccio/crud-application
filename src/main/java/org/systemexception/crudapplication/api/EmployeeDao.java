@@ -47,7 +47,7 @@ public interface EmployeeDao {
 	 * @param emp
 	 * @return
 	 */
-	boolean updateEmployee(Employee emp);
+	void updateEmployee(Employee emp);
 
 	/**
 	 * Deletes employee

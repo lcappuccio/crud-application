@@ -243,8 +243,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public boolean updateEmployee(Employee emp) {
-		boolean operationResult = false;
+	public void updateEmployee(Employee emp) {
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		try {
@@ -257,7 +256,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			pss.setInt(3, emp.getEmpId());
 			int countRows = pss.executeUpdate();
 			if (countRows > 0) {
-				operationResult = true;
 				conn.commit();
 			}
 		} catch (SQLException e) {
@@ -265,7 +263,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		} finally {
 			closeAll(conn, pss, rs);
 		}
-		return operationResult;
 	}
 
 	/**
@@ -291,8 +288,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 
-	public boolean cleanTests() {
-		boolean operationResult = false;
+	public void cleanTests() {
 		PreparedStatement pss = null;
 		ResultSet rs = null;
 		try {
@@ -306,7 +302,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		} finally {
 			closeAll(conn, pss, rs);
 		}
-		return operationResult;
 	}
 
 	private List<Employee> resultSetToEmployeeList(ResultSet rs) throws SQLException {
