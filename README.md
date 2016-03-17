@@ -20,6 +20,8 @@ A basic crud application example
 
 ## Dependencies
 
+**READ CAREFULLY**
+
 ### Testing
 Use `glassfish-embedded-all` and comment out `javaee-web-api`.
 

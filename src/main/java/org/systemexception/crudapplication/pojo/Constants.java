@@ -8,11 +8,11 @@ import java.util.Locale;
  */
 public class Constants {
 
-	public static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" " +
+	private static final String BOOTSTRAP_CSS_PATH = "<link href=\"resources/css/bootstrap.min.css\" " +
 			"rel=\"stylesheet\">";
-	public static final String JQUERY_PATH = "<script src=\"resources/js/jquery-1.11.3.min.js\"></script>";
-	public static final String UPDATE_EMPLOYEE_JS_PATH = "<script src=\"resources/js/updateEmployee.js\"></script>";
-	public static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" " +
+	private static final String JQUERY_PATH = "<script src=\"resources/js/jquery-1.11.3.min.js\"></script>";
+	private static final String UPDATE_EMPLOYEE_JS_PATH = "<script src=\"resources/js/updateEmployee.js\"></script>";
+	private static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" " +
 			"href=\"resources/images/favicon.png\">";
 
 	public static final String PAGE_HEADER = "<html>"

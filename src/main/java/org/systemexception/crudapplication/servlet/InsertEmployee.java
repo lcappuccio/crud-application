@@ -30,12 +30,11 @@ public class InsertEmployee extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
 	 */
-	public void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		LOG.info("request from " + request.getRemoteAddr());
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Insert New Employee</h2><hr>");
@@ -56,8 +55,6 @@ public class InsertEmployee extends HttpServlet {
 			out.println("</form>");
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
-		} finally {
-			out.close();
 		}
 	}
 

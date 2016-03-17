@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Employees {
 
-	private List<Employee> empList = new ArrayList<Employee>();
+	private List<Employee> empList = new ArrayList<>();
 	private final EmployeeDao empDao = new EmployeeDaoImpl();
 
 	public Employees() {
