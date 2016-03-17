@@ -38,15 +38,15 @@ public class ListEmployees extends HttpServlet {
 			out.println("<div class=\"container\">");
 			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
-			out.println("<table class=\"table table-hover\">");
-			out.println("<tr><th>Employee ID</th><th>Name</th><th>Last Name</th></tr>");
+			out.println("<table class=\"table table-striped\">");
+			out.println(Constants.TABLE_HEAD);
 			for (int i = 0; i < employees.countEmployees(); i++) {
 				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
 				String empLastName = employees.getEmpList().get(i).getEmpSurname();
 				out.println("<tr><td>" + empID + "</td><td>" + empName + "</td><td>" + empLastName + "</td></tr>");
 			}
-			out.println("</table>");
+			out.println("</tbody></table>");
 			out.println("</div>");
 			out.println(Constants.PAGE_END);
 		}

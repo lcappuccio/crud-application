@@ -2,12 +2,11 @@
  * @author leo
  * @date 24/02/2015 22:59
  */
-package org.systemexception.crudapplication.impl;
+package org.systemexception.crudapplication.dao;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.systemexception.crudapplication.api.EmployeeDao;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.pojo.Constants;
 
