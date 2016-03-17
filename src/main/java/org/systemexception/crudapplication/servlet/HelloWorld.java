@@ -27,7 +27,7 @@ public class HelloWorld extends HttpServlet {
 	 * @throws IOException      if an I/O error occurs
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		LOG.info("request to " + this.getClass().getCanonicalName());
 		try (PrintWriter out = response.getWriter()) {

@@ -28,7 +28,7 @@ public class BadWorld extends HttpServlet {
 	 * @throws IOException      if an I/O error occurs
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();

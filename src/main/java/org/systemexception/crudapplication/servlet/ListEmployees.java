@@ -28,7 +28,7 @@ public class ListEmployees extends HttpServlet {
 	 * @throws IOException      if an I/O error occurs
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		Employees employees = new Employees();
 		LOG.info("request from " + request.getRemoteAddr());
