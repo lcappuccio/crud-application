@@ -94,7 +94,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public List<Employee> getAllEmployees() {
 		PreparedStatement pss = null;
 		ResultSet rs = null;
-		List<Employee> empList = new ArrayList<Employee>();
+		List<Employee> empList = new ArrayList<>();
 		try {
 			conn = getConnection();
 			pss = conn.prepareStatement("SELECT EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME FROM EMPLOYEES",
