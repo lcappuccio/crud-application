@@ -3,6 +3,7 @@ package org.systemexception.crudapplication.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.systemexception.crudapplication.dao.EmployeeDao;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 
@@ -17,7 +18,7 @@ import static junit.framework.Assert.assertTrue;
  */
 public class TestEmployeeDao {
 
-	private EmployeeDaoImpl sut;
+	private EmployeeDao sut;
 	private Employee employee;
 
 	@Before
@@ -64,20 +65,26 @@ public class TestEmployeeDao {
 		sut.cleanTests();
 	}
 
-	/**
-	 * tests are run in consecutive order
-	 */
 	@Test
-	public void test_3_EmployeeDaoDelete() {
+	public void test_3_FindEmployeeByName() {
+		List<Employee> employee = sut.findByName("Test");
+		assertEquals("Test", employee.get(0).getEmpName());
+	}
+
+	@Test
+	public void test_4_FindEmployeeById() {
+		Employee employee = sut.findById(0);
+		assertEquals(0, employee.getEmpId());
+	}
+
+	@Test
+	public void test_5_EmployeeDaoDelete() {
 		sut.insertEmployeeWithId(employee);
 		assertTrue(sut.deleteEmployee(employee));
 	}
 
-	/**
-	 * tests are run in consecutive order
-	 */
 	@Test
-	public void test_4_EmployeeDaoUpdate() {
+	public void test_6_EmployeeDaoUpdate() {
 		sut.insertEmployeeWithId(employee);
 		employee.setEmpName("TestNameUpdate");
 		employee.setEmpSurname("TestNameUpdate");

@@ -42,6 +42,14 @@ public interface EmployeeDao {
 	boolean insertEmployee(Employee emp);
 
 	/**
+	 * Insert employee with ID
+	 *
+	 * @param emp
+	 * @return
+	 */
+	boolean insertEmployeeWithId(Employee emp);
+
+	/**
 	 * Update an employee attribute (not id)
 	 *
 	 * @param emp
@@ -63,4 +71,9 @@ public interface EmployeeDao {
 	 * @return
 	 */
 	int countEmployees();
+
+	/**
+	 * Cleans database of tests
+	 */
+	void cleanTests();
 }
