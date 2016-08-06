@@ -80,9 +80,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			pss.setInt(1, empId);
 			rs = pss.executeQuery();
 			while (rs.next()) {
-				emp.setEmpId(rs.getInt("EMPLOYEE_ID"));
-				emp.setEmpName(rs.getString("EMPLOYEE_NAME"));
-				emp.setEmpSurname(rs.getString("EMPLOYEE_SURNAME"));
+				emp.setEmpId(rs.getInt(DaoConstants.EMPLOYEE_ID.toString()));
+				emp.setEmpName(rs.getString(DaoConstants.EMPLOYEE_NAME.toString()));
+				emp.setEmpSurname(rs.getString(DaoConstants.EMPLOYEE_SURNAME.toString()));
 			}
 		} catch (SQLException e) {
 			exceptionHandler(e);
@@ -310,9 +310,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		List<Employee> empList = new ArrayList<>();
 		while (rs.next()) {
 			Employee emp = new Employee();
-			emp.setEmpId(rs.getInt("EMPLOYEE_ID"));
-			emp.setEmpName(rs.getString("EMPLOYEE_NAME"));
-			emp.setEmpSurname(rs.getString("EMPLOYEE_SURNAME"));
+			emp.setEmpId(rs.getInt(DaoConstants.EMPLOYEE_ID.toString()));
+			emp.setEmpName(rs.getString(DaoConstants.EMPLOYEE_NAME.toString()));
+			emp.setEmpSurname(rs.getString(DaoConstants.EMPLOYEE_SURNAME.toString()));
 			empList.add(emp);
 		}
 		return empList;

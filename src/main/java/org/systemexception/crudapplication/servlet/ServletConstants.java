@@ -16,6 +16,6 @@ public enum ServletConstants {
 
 	@Override
 	public String toString() {
-		return this.constant;
+		return constant;
 	}
 }
