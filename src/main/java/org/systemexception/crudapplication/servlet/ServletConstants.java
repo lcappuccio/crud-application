@@ -10,6 +10,8 @@ public enum ServletConstants {
 	LOG_MESSAGE_EMPLOYEES(" employees"),
 	LOG_MESSAGE_RETRIEVED("retrieved "),
 	PARAMETER_EMP_ID("empID"),
+	PARAMETER_EMP_FIRST_NAME("firstName"),
+	PARAMETER_EMP_LAST_NAME("lastName"),
 	REQUEST_FROM("request from ");
 
 	private final String constant;

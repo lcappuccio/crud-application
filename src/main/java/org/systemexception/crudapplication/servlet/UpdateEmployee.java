@@ -119,8 +119,8 @@ public class UpdateEmployee extends HttpServlet {
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		int empID = Integer.parseInt(request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString()));
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
+		String firstName = request.getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString());
+		String lastName = request.getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString());
 		Employee employee = new Employee(empID, firstName, lastName);
 		empDao.updateEmployee(employee);
 		LOG.info("Request update for empID: " + empID + ": " + firstName + "," + lastName);
