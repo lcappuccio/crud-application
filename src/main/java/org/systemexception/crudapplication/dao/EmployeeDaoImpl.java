@@ -47,7 +47,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		/*
 		TEST
 		 */
-//		dataSource.setJdbcUrl("jdbc:mysql://192.168.1.26:3306/test");
+//		dataSource.setJdbcUrl("jdbc:mysql://192.168.0.11:3306/test");
 //		dataSource.setUsername("test");
 //		dataSource.setPassword("test");
 		/*
