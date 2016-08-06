@@ -26,7 +26,7 @@ import org.systemexception.crudapplication.dao.EmployeeDao;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.model.Employees;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -66,13 +66,13 @@ public class UpdateEmployee extends HttpServlet {
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");
 		try (PrintWriter out = response.getWriter()) {
-			out.println(Constants.PAGE_HEADER_UPDATE_EMPLOYEE);
+			out.println(PojoConstants.PAGE_HEADER_UPDATE_EMPLOYEE);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
 			out.println("<form class=\"form-update\">");
 			out.println("<table class=\"table table-hover\" id=\"updateEmployeeTable\">");
-			out.println(Constants.TABLE_HEAD);
+			out.println(PojoConstants.TABLE_HEAD);
 			for (int i = 0; i < employees.countEmployees(); i++) {
 				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
@@ -85,7 +85,7 @@ public class UpdateEmployee extends HttpServlet {
 			out.println("</table>");
 			out.println("</form>");
 			out.println("</div>");
-			out.println(Constants.PAGE_END);
+			out.println(PojoConstants.PAGE_END);
 		}
 	}
 

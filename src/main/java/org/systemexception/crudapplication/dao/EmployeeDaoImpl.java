@@ -8,7 +8,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.systemexception.crudapplication.model.Employee;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -123,7 +123,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 							"SELECT EMPLOYEE_ID, EMPLOYEE_NAME, EMPLOYEE_SURNAME FROM EMPLOYEES WHERE lower" +
 									"(EMPLOYEE_NAME) LIKE ?",
 							ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			pss.setString(1, "%" + empName.toLowerCase(Constants.LOCALE) + "%");
+			pss.setString(1, "%" + empName.toLowerCase(PojoConstants.LOCALE) + "%");
 			rs = pss.executeQuery();
 			empList = resultSetToEmployeeList(rs);
 		} catch (SQLException e) {
