@@ -61,7 +61,7 @@ public class UpdateEmployee extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
 		LOG.info("request from " + request.getRemoteAddr());
 		LOG.info("retrieved " + employees.countEmployees() + " employees");

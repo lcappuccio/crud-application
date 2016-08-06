@@ -29,7 +29,7 @@ public class BadWorld extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
 		LOG.info("request from " + request.getRemoteAddr());

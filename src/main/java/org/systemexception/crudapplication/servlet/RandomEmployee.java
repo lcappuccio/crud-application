@@ -33,7 +33,7 @@ public class RandomEmployee extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		LOG.info("request from " + request.getRemoteAddr());
 		try (PrintWriter out = response.getWriter()) {
 			out.println(Constants.PAGE_HEADER);

@@ -33,7 +33,7 @@ public class EmployeesJson extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException, PojoMapperException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
 		String employeesJson = pojoMapper.employeesToJson(employees);
 		LOG.info("request from " + request.getRemoteAddr());
