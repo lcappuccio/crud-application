@@ -20,6 +20,7 @@ public class TestEmployeeDao {
 
 	private EmployeeDao sut;
 	private Employee employee;
+	private final String homerName = "Homer";
 
 	@Before
 	public void setUp() {
@@ -34,12 +35,12 @@ public class TestEmployeeDao {
 
 	@Test
 	public void testGetHomer() {
-		assertTrue("Homer".equals(sut.findById(0).getEmpName()));
+		assertTrue(homerName.equals(sut.findById(0).getEmpName()));
 	}
 
 	@Test
 	public void testGetEmployeeList() {
-		assertTrue("Homer".equals(sut.findByName("HoMeR").get(0).getEmpName()));
+		assertTrue(homerName.equals(sut.findByName("HoMeR").get(0).getEmpName()));
 	}
 
 	@Test
@@ -86,8 +87,8 @@ public class TestEmployeeDao {
 	@Test
 	public void test_6_EmployeeDaoUpdate() {
 		sut.insertEmployeeWithId(employee);
-		employee.setEmpName("TestNameUpdate");
-		employee.setEmpSurname("TestNameUpdate");
+		employee.setEmpName(UpdateEmployeeTest.TEST_UPDATED_NAME);
+		employee.setEmpSurname(UpdateEmployeeTest.TEST_UPDATED_SURNAME);
 		sut.updateEmployee(employee);
 		Employee employeeUpdated = sut.findById(employee.getEmpId());
 		assertEquals(employeeUpdated, employee);

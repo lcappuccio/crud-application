@@ -19,6 +19,8 @@ import static org.mockito.Mockito.when;
  */
 public class ListEmployeesTest {
 
+	public final static String LOG_LIST_EMPLOYEES = "List Employees";
+
 	@Test
 	public void testForm() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
@@ -30,7 +32,7 @@ public class ListEmployeesTest {
 		new ListEmployees().doGet(request, response);
 
 		writer.flush();
-		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8").contains("List Employees"));
+		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8").contains(LOG_LIST_EMPLOYEES));
 	}
 
 }

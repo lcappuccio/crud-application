@@ -25,6 +25,7 @@ public class UpdateEmployeeTest {
 
 	private final EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
 	private final Employee employee = new Employee(999, "Test", "Test");
+	public final static String TEST_UPDATED_NAME = "TestUpdatedName", TEST_UPDATED_SURNAME = "TestUpdatedSurname";
 
 	@Before
 	public void setUp() {
@@ -57,9 +58,9 @@ public class UpdateEmployeeTest {
 		when(request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString()))
 				.thenReturn(String.valueOf(employee.getEmpId()));
 		when(request.getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString()))
-				.thenReturn(String.valueOf("TestUpdatedName"));
+				.thenReturn(String.valueOf(TEST_UPDATED_NAME));
 		when(request.getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString()))
-				.thenReturn(String.valueOf("TestUpdatedSurname"));
+				.thenReturn(String.valueOf(TEST_UPDATED_SURNAME));
 		when(response.getWriter()).thenReturn(new PrintWriter(BadWorldTest.FILE_NAME));
 
 		PrintWriter writer = new PrintWriter(BadWorldTest.FILE_NAME);
@@ -70,8 +71,8 @@ public class UpdateEmployeeTest {
 		verify(request, atLeast(1)).getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString());
 		verify(request, atLeast(1)).getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString());
 		writer.flush();
-		assertTrue("TestUpdatedName".equals(employeeDao.findById(999).getEmpName()));
-		assertTrue("TestUpdatedSurname".equals(employeeDao.findById(999).getEmpSurname()));
+		assertTrue(TEST_UPDATED_NAME.equals(employeeDao.findById(999).getEmpName()));
+		assertTrue(TEST_UPDATED_SURNAME.equals(employeeDao.findById(999).getEmpSurname()));
 	}
 
 }

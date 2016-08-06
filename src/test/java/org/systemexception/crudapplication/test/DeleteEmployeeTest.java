@@ -49,7 +49,8 @@ public class DeleteEmployeeTest {
 		new DeleteEmployee().doGet(request, response);
 
 		writer.flush();
-		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8").contains("List Employees"));
+		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8")
+				.contains(ListEmployeesTest.LOG_LIST_EMPLOYEES));
 	}
 
 	@Test
