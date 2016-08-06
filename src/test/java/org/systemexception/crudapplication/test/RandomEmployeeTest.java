@@ -19,18 +19,16 @@ import static org.mockito.Mockito.when;
  */
 public class RandomEmployeeTest {
 
-	private final String fileName = System.getProperty("user.dir") + File.separator + "output.txt";
-
 	@Test
 	public void testServlet() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		PrintWriter writer = new PrintWriter(fileName);
+		PrintWriter writer = new PrintWriter(BadWorldTest.FILE_NAME);
 		when(response.getWriter()).thenReturn(writer);
 
 		new RandomEmployee().doGet(request, response);
 
 		writer.flush();
-		assertTrue(FileUtils.readFileToString(new File(fileName), "UTF-8").contains("Random Employee"));
+		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8").contains("Random Employee"));
 	}
 }

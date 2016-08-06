@@ -2,7 +2,7 @@ package org.systemexception.crudapplication.servlet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,17 +29,17 @@ public class BadWorld extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
-		LOG.info("request from " + request.getRemoteAddr());
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
 		try (PrintWriter out = response.getWriter()) {
-			out.println(Constants.PAGE_HEADER);
+			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Bad World!</h2><hr>");
 			out.println("Guess this: " + rndStr);
 			out.println("</div>");
-			out.println(Constants.PAGE_END);
+			out.println(PojoConstants.PAGE_END);
 		}
 	}
 

@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.systemexception.crudapplication.dao.EmployeeDao;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,10 +32,10 @@ public class InsertEmployee extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		LOG.info("request from " + request.getRemoteAddr());
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
 		try (PrintWriter out = response.getWriter()) {
-			out.println(Constants.PAGE_HEADER);
+			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Insert New Employee</h2><hr>");
 			out.println("<form class=\"form-insert\" action=\"InsertEmployee\" method=\"POST\">");
@@ -54,7 +54,7 @@ public class InsertEmployee extends HttpServlet {
 
 			out.println("</form>");
 			out.println("</div>");
-			out.println(Constants.PAGE_END);
+			out.println(PojoConstants.PAGE_END);
 		}
 	}
 
@@ -87,8 +87,8 @@ public class InsertEmployee extends HttpServlet {
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String empName = request.getParameter("employeeName");
-		String empSurname = request.getParameter("employeeSurname");
+		String empName = request.getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString());
+		String empSurname = request.getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString());
 		Employee emp = new Employee(empName, empSurname);
 		empDao.insertEmployee(emp);
 		processRequest(request, response);

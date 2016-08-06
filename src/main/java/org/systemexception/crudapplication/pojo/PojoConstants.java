@@ -6,7 +6,7 @@ import java.util.Locale;
  * @author leo
  * @date Feb 19, 2015 8:34:31 PM
  */
-public class Constants {
+public class PojoConstants {
 
 	private static final String BOOTSTRAP_CSS_PATH = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn" +
 			".com/bootstrap/3.3.6/css/bootstrap.min.css\">";

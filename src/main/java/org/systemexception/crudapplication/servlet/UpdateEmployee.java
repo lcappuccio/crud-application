@@ -26,7 +26,7 @@ import org.systemexception.crudapplication.dao.EmployeeDao;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.model.Employees;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -61,18 +61,19 @@ public class UpdateEmployee extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
-		LOG.info("request from " + request.getRemoteAddr());
-		LOG.info("retrieved " + employees.countEmployees() + " employees");
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
+		LOG.info(ServletConstants.LOG_MESSAGE_RETRIEVED.toString() + employees.countEmployees() +
+				ServletConstants.LOG_MESSAGE_EMPLOYEES.toString());
 		try (PrintWriter out = response.getWriter()) {
-			out.println(Constants.PAGE_HEADER_UPDATE_EMPLOYEE);
+			out.println(PojoConstants.PAGE_HEADER_UPDATE_EMPLOYEE);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Update Employees</h2><hr>");
 			// Start printing table
 			out.println("<form class=\"form-update\">");
 			out.println("<table class=\"table table-hover\" id=\"updateEmployeeTable\">");
-			out.println(Constants.TABLE_HEAD);
+			out.println(PojoConstants.TABLE_HEAD);
 			for (int i = 0; i < employees.countEmployees(); i++) {
 				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
@@ -85,7 +86,7 @@ public class UpdateEmployee extends HttpServlet {
 			out.println("</table>");
 			out.println("</form>");
 			out.println("</div>");
-			out.println(Constants.PAGE_END);
+			out.println(PojoConstants.PAGE_END);
 		}
 	}
 
@@ -117,9 +118,9 @@ public class UpdateEmployee extends HttpServlet {
 	@Override
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
-		int empID = Integer.parseInt(request.getParameter("empID"));
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
+		int empID = Integer.parseInt(request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString()));
+		String firstName = request.getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString());
+		String lastName = request.getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString());
 		Employee employee = new Employee(empID, firstName, lastName);
 		empDao.updateEmployee(employee);
 		LOG.info("Request update for empID: " + empID + ": " + firstName + "," + lastName);

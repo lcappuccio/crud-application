@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.systemexception.crudapplication.dao.EmployeeDao;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,10 +33,10 @@ public class RandomEmployee extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		LOG.info("request from " + request.getRemoteAddr());
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
 		try (PrintWriter out = response.getWriter()) {
-			out.println(Constants.PAGE_HEADER);
+			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Random Employee</h2><hr>");
 			// Fetch random Employee details
@@ -45,7 +45,7 @@ public class RandomEmployee extends HttpServlet {
 			Employee employee = empDao.findById(randomId);
 			out.println("Employee: " + employee.getEmpName() + " " + employee.getEmpSurname());
 			out.println("</div>");
-			out.println(Constants.PAGE_END);
+			out.println(PojoConstants.PAGE_END);
 		}
 	}
 

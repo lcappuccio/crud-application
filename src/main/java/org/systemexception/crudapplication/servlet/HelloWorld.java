@@ -2,7 +2,7 @@ package org.systemexception.crudapplication.servlet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,15 +28,15 @@ public class HelloWorld extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		LOG.info("request to " + this.getClass().getCanonicalName());
 		try (PrintWriter out = response.getWriter()) {
-			out.println(Constants.PAGE_HEADER);
+			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>Servlet HelloWorld at " + request.getContextPath() + "</h2><hr>");
 			out.println("Your IP: " + request.getRemoteAddr());
 			out.println("</div>");
-			out.println(Constants.PAGE_END);
+			out.println(PojoConstants.PAGE_END);
 		}
 	}
 

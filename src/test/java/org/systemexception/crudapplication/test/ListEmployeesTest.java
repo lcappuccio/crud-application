@@ -19,20 +19,20 @@ import static org.mockito.Mockito.when;
  */
 public class ListEmployeesTest {
 
-	private final String fileName = System.getProperty("user.dir") + File.separator + "output.txt";
+	public final static String LOG_LIST_EMPLOYEES = "List Employees";
 
 	@Test
 	public void testForm() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		when(response.getWriter()).thenReturn(new PrintWriter(fileName));
+		when(response.getWriter()).thenReturn(new PrintWriter(BadWorldTest.FILE_NAME));
 
-		PrintWriter writer = new PrintWriter(fileName);
+		PrintWriter writer = new PrintWriter(BadWorldTest.FILE_NAME);
 
 		new ListEmployees().doGet(request, response);
 
 		writer.flush();
-		assertTrue(FileUtils.readFileToString(new File(fileName), "UTF-8").contains("List Employees"));
+		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8").contains(LOG_LIST_EMPLOYEES));
 	}
 
 }

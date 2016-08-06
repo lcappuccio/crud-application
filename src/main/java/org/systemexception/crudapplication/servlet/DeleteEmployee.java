@@ -26,7 +26,7 @@ import org.systemexception.crudapplication.dao.EmployeeDao;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.model.Employees;
-import org.systemexception.crudapplication.pojo.Constants;
+import org.systemexception.crudapplication.pojo.PojoConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -61,18 +61,19 @@ public class DeleteEmployee extends HttpServlet {
 	 */
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
-		LOG.info("request from " + request.getRemoteAddr());
-		LOG.info("retrieved " + employees.countEmployees() + " employees");
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
+		LOG.info(ServletConstants.LOG_MESSAGE_RETRIEVED.toString() + employees.countEmployees() +
+				ServletConstants.LOG_MESSAGE_EMPLOYEES.toString());
 		try (PrintWriter out = response.getWriter()) {
-			out.println(Constants.PAGE_HEADER);
+			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
 			out.println("<h2>List Employees</h2><hr>");
 			// Start printing table
 			out.println("<form class=\"form-delete\" action=\"DeleteEmployee\" method=\"POST\">");
 			out.println("<table class=\"table table-hover\">");
-			out.println(Constants.TABLE_HEAD);
+			out.println(PojoConstants.TABLE_HEAD);
 			for (int i = 0; i < employees.countEmployees(); i++) {
 				String empID = String.valueOf(employees.getEmpList().get(i).getEmpId());
 				String empName = employees.getEmpList().get(i).getEmpName();
@@ -83,7 +84,7 @@ public class DeleteEmployee extends HttpServlet {
 			out.println("</table>");
 			out.println("</form>");
 			out.println("</div>");
-			out.println(Constants.PAGE_END);
+			out.println(PojoConstants.PAGE_END);
 		}
 	}
 
@@ -115,7 +116,7 @@ public class DeleteEmployee extends HttpServlet {
 	@Override
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
-		String empID = request.getParameter("empID");
+		String empID = request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString());
 		Employee employee = new Employee((Integer.valueOf(empID)), null, null);
 		empDao.deleteEmployee(employee);
 		processRequest(request, response);

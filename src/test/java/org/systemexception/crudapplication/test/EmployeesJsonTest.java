@@ -25,7 +25,6 @@ public class EmployeesJsonTest {
 
 	private final EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
 	private final Employee employee = new Employee(999, "Test", "Test");
-	private final String fileName = System.getProperty("user.dir") + File.separator + "output.txt";
 
 	@Before
 	public void setUp() {
@@ -41,14 +40,15 @@ public class EmployeesJsonTest {
 	public void testServlet() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		PrintWriter writer = new PrintWriter(fileName);
+		PrintWriter writer = new PrintWriter(BadWorldTest.FILE_NAME);
 		when(response.getWriter()).thenReturn(writer);
 
 		new EmployeesJson().doGet(request, response);
 
 		writer.flush();
-		assertTrue(FileUtils.readFileToString(new File(fileName), "UTF-8").contains("Servlet EmployeesJson"));
-		assertTrue(FileUtils.readFileToString(new File(fileName), "UTF-8").contains("{\"empId\":999," +
-				"\"empName\":\"Test\",\"empSurname\":\"Test\"}"));
+		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8")
+				.contains("Servlet EmployeesJson"));
+		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8")
+				.contains("{\"empId\":999," + "\"empName\":\"Test\",\"empSurname\":\"Test\"}"));
 	}
 }
