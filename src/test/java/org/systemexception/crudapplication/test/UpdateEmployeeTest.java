@@ -25,8 +25,6 @@ public class UpdateEmployeeTest {
 
 	private final EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
 	private final Employee employee = new Employee(999, "Test", "Test");
-	private final String fileName = System.getProperty("user.dir") + File.separator + "output.txt";
-
 
 	@Before
 	public void setUp() {
@@ -42,14 +40,14 @@ public class UpdateEmployeeTest {
 	public void testForm() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		when(response.getWriter()).thenReturn(new PrintWriter(fileName));
+		when(response.getWriter()).thenReturn(new PrintWriter(BadWorldTest.FILE_NAME));
 
-		PrintWriter writer = new PrintWriter(fileName);
+		PrintWriter writer = new PrintWriter(BadWorldTest.FILE_NAME);
 
 		new UpdateEmployee().doGet(request, response);
 
 		writer.flush();
-		assertTrue(FileUtils.readFileToString(new File(fileName), "UTF-8").contains("Update Employees"));
+		assertTrue(FileUtils.readFileToString(new File(BadWorldTest.FILE_NAME), "UTF-8").contains("Update Employees"));
 	}
 
 	@Test
@@ -62,9 +60,9 @@ public class UpdateEmployeeTest {
 				.thenReturn(String.valueOf("TestUpdatedName"));
 		when(request.getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString()))
 				.thenReturn(String.valueOf("TestUpdatedSurname"));
-		when(response.getWriter()).thenReturn(new PrintWriter(fileName));
+		when(response.getWriter()).thenReturn(new PrintWriter(BadWorldTest.FILE_NAME));
 
-		PrintWriter writer = new PrintWriter(fileName);
+		PrintWriter writer = new PrintWriter(BadWorldTest.FILE_NAME);
 
 		new UpdateEmployee().doPost(request, response);
 
