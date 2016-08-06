@@ -57,16 +57,18 @@ public class InsertEmployeeTest {
 	public void testInsert() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		when(request.getParameter("employeeName")).thenReturn(String.valueOf(employee.getEmpName()));
-		when(request.getParameter("employeeSurname")).thenReturn(String.valueOf(employee.getEmpSurname()));
+		when(request.getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString()))
+				.thenReturn(String.valueOf(employee.getEmpName()));
+		when(request.getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString()))
+				.thenReturn(String.valueOf(employee.getEmpSurname()));
 		when(response.getWriter()).thenReturn(new PrintWriter(BadWorldTest.FILE_NAME));
 
 		PrintWriter writer = new PrintWriter(BadWorldTest.FILE_NAME);
 
 		new InsertEmployee().doPost(request, response);
 
-		verify(request, atLeast(1)).getParameter("employeeName");
-		verify(request, atLeast(1)).getParameter("employeeSurname");
+		verify(request, atLeast(1)).getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString());
+		verify(request, atLeast(1)).getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString());
 		writer.flush();
 		assertTrue(employeeDao.getAllEmployees().contains(employee));
 	}

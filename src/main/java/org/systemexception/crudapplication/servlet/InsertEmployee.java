@@ -87,8 +87,8 @@ public class InsertEmployee extends HttpServlet {
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String empName = request.getParameter("employeeName");
-		String empSurname = request.getParameter("employeeSurname");
+		String empName = request.getParameter(ServletConstants.PARAMETER_EMP_FIRST_NAME.toString());
+		String empSurname = request.getParameter(ServletConstants.PARAMETER_EMP_LAST_NAME.toString());
 		Employee emp = new Employee(empName, empSurname);
 		empDao.insertEmployee(emp);
 		processRequest(request, response);
