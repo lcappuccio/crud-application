@@ -36,8 +36,9 @@ public class EmployeesJson extends HttpServlet {
 		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
 		String employeesJson = pojoMapper.employeesToJson(employees);
-		LOG.info("request from " + request.getRemoteAddr());
-		LOG.info("retrieved " + employees.countEmployees() + " employees");
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
+		LOG.info(ServletConstants.LOG_MESSAGE_RETRIEVED.toString() + employees.countEmployees() +
+				ServletConstants.LOG_MESSAGE_EMPLOYEES.toString());
 		try (PrintWriter out = response.getWriter()) {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");

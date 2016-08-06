@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.servlet.DeleteEmployee;
+import org.systemexception.crudapplication.servlet.ServletConstants;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +42,8 @@ public class DeleteEmployeeTest {
 	public void testForm() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		when(request.getParameter("empID")).thenReturn(String.valueOf(employee.getEmpId()));
+		when(request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString()))
+				.thenReturn(String.valueOf(employee.getEmpId()));
 		when(response.getWriter()).thenReturn(new PrintWriter(fileName));
 
 		PrintWriter writer = new PrintWriter(fileName);
@@ -56,14 +58,15 @@ public class DeleteEmployeeTest {
 	public void testDelete() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		when(request.getParameter("empID")).thenReturn(String.valueOf(employee.getEmpId()));
+		when(request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString()))
+				.thenReturn(String.valueOf(employee.getEmpId()));
 		when(response.getWriter()).thenReturn(new PrintWriter(fileName));
 
 		PrintWriter writer = new PrintWriter(fileName);
 
 		new DeleteEmployee().doPost(request, response);
 
-		verify(request, atLeast(1)).getParameter("empID");
+		verify(request, atLeast(1)).getParameter(ServletConstants.PARAMETER_EMP_ID.toString());
 		writer.flush();
 		assertTrue(0 == employeeDao.findById(employee.getEmpId()).getEmpId());
 	}

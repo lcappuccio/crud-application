@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.systemexception.crudapplication.dao.EmployeeDaoImpl;
 import org.systemexception.crudapplication.model.Employee;
 import org.systemexception.crudapplication.servlet.InsertEmployee;
+import org.systemexception.crudapplication.servlet.ServletConstants;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +42,8 @@ public class InsertEmployeeTest {
 	public void testForm() throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
-		when(request.getParameter("empID")).thenReturn(String.valueOf(employee.getEmpId()));
+		when(request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString()))
+				.thenReturn(String.valueOf(employee.getEmpId()));
 		when(response.getWriter()).thenReturn(new PrintWriter(fileName));
 
 		PrintWriter writer = new PrintWriter(fileName);

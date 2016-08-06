@@ -63,8 +63,9 @@ public class DeleteEmployee extends HttpServlet {
 			throws IOException {
 		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
-		LOG.info("request from " + request.getRemoteAddr());
-		LOG.info("retrieved " + employees.countEmployees() + " employees");
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
+		LOG.info(ServletConstants.LOG_MESSAGE_RETRIEVED.toString() + employees.countEmployees() +
+				ServletConstants.LOG_MESSAGE_EMPLOYEES.toString());
 		try (PrintWriter out = response.getWriter()) {
 			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
@@ -115,7 +116,7 @@ public class DeleteEmployee extends HttpServlet {
 	@Override
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
-		String empID = request.getParameter("empID");
+		String empID = request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString());
 		Employee employee = new Employee((Integer.valueOf(empID)), null, null);
 		empDao.deleteEmployee(employee);
 		processRequest(request, response);

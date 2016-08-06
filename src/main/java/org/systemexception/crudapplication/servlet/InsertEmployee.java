@@ -33,7 +33,7 @@ public class InsertEmployee extends HttpServlet {
 	private void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
 		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
-		LOG.info("request from " + request.getRemoteAddr());
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
 		try (PrintWriter out = response.getWriter()) {
 			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");

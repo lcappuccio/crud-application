@@ -63,8 +63,9 @@ public class UpdateEmployee extends HttpServlet {
 			throws IOException {
 		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
-		LOG.info("request from " + request.getRemoteAddr());
-		LOG.info("retrieved " + employees.countEmployees() + " employees");
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
+		LOG.info(ServletConstants.LOG_MESSAGE_RETRIEVED.toString() + employees.countEmployees() +
+				ServletConstants.LOG_MESSAGE_EMPLOYEES.toString());
 		try (PrintWriter out = response.getWriter()) {
 			out.println(PojoConstants.PAGE_HEADER_UPDATE_EMPLOYEE);
 			out.println("<div class=\"container\">");
@@ -117,7 +118,7 @@ public class UpdateEmployee extends HttpServlet {
 	@Override
 	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
-		int empID = Integer.parseInt(request.getParameter("empID"));
+		int empID = Integer.parseInt(request.getParameter(ServletConstants.PARAMETER_EMP_ID.toString()));
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		Employee employee = new Employee(empID, firstName, lastName);

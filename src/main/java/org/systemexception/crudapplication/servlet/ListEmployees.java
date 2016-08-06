@@ -31,8 +31,9 @@ public class ListEmployees extends HttpServlet {
 			throws IOException {
 		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Employees employees = new Employees();
-		LOG.info("request from " + request.getRemoteAddr());
-		LOG.info("retrieved " + employees.countEmployees() + " employees");
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
+		LOG.info(ServletConstants.LOG_MESSAGE_RETRIEVED.toString() + employees.countEmployees() +
+				ServletConstants.LOG_MESSAGE_EMPLOYEES.toString());
 		try (PrintWriter out = response.getWriter()) {
 			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");

@@ -32,7 +32,7 @@ public class BadWorld extends HttpServlet {
 		response.setContentType(ServletConstants.SERVLET_CONTENT.toString());
 		Random rnd = new Random();
 		String rndStr = Long.toHexString(rnd.nextLong()).toUpperCase();
-		LOG.info("request from " + request.getRemoteAddr());
+		LOG.info(ServletConstants.REQUEST_FROM.toString() + request.getRemoteAddr());
 		try (PrintWriter out = response.getWriter()) {
 			out.println(PojoConstants.PAGE_HEADER);
 			out.println("<div class=\"container\">");
