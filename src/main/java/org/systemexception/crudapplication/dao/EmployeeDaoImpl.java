@@ -32,30 +32,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	private Connection getConnection() throws SQLException {
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
 		/*
-		 * TODO IP address, schema, user and password should be in external properties
-		 * for testing use ("jdbc:mysql://192.168.1.26:3306/test");
-		 * for testing also ("jdbc:mariadb://192.168.1.26:3306/test");
-		 * for production use ("jdbc:mysql://localhost:3306/test");
-		 * for production use ("jdbc:mysql://localhost:3306/test");
-		 * dataSource.setUsername("test");
-		 * dataSource.setPassword("test");
-		 * for travis use:
-		 * dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
-		 * dataSource.setUsername("travis");
-		 * dataSource.setPassword(null);
-		 */
-		/*
 		TEST
 		 */
-//		dataSource.setJdbcUrl("jdbc:mysql://192.168.0.11:3306/test");
-//		dataSource.setUsername("test");
-//		dataSource.setPassword("test");
+		dataSource.setJdbcUrl("jdbc:mysql://192.168.0.4:3306/test");
+		dataSource.setUsername("test");
+		dataSource.setPassword("test");
 		/*
 		TRAVIS
 		 */
-		dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
-		dataSource.setUsername("travis");
-		dataSource.setPassword(null);
+		// dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/myapp_test");
+		// dataSource.setUsername("travis");
+		// dataSource.setPassword(null);
 		/*
 		STANDARD SETTINGS
 		 */
