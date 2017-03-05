@@ -42,13 +42,13 @@ public class InsertEmployee extends HttpServlet {
 
 			out.println("<div class=\"form-group\">"
 					+ "<label class=\"sr-only\" for=\"employeeName\">Name</label>"
-					+ "<input type=\"text\" class=\"form-control\" id=\"employeeName\" placeholder=\"Enter employee " +
-					"name\" name=\"employeeName\"></div>");
+					+ "<input type=\"text\" class=\"form-control\" id=\"firstName\" placeholder=\"Enter employee " +
+					"name\" name=\"firstName\"></div>");
 
 			out.println("<div class=\"form-group\">"
 					+ "<label class=\"sr-only\" for=\"employeeSurname\">Surname</label>"
-					+ "<input type=\"text\" class=\"form-control\" id=\"employeeSurname\" placeholder=\"Enter " +
-					"employee name\" name=\"employeeSurname\"></div>");
+					+ "<input type=\"text\" class=\"form-control\" id=\"lastName\" placeholder=\"Enter " +
+					"employee name\" name=\"lastName\"></div>");
 
 			out.println("<button type=\"submit\" class=\"btn btn-default\">Submit</button>");
 
