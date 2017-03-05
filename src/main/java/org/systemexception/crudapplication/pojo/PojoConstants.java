@@ -8,14 +8,12 @@ import java.util.Locale;
  */
 public class PojoConstants {
 
-	private static final String BOOTSTRAP_CSS_PATH = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn" +
-			".com/bootstrap/3.3.6/css/bootstrap.min.css\">";
-	private static final String BOOTSTRAP_CSS_THEME = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn" +
-			".com/bootstrap/3.3.6/css/bootstrap-theme.min.css crossorigin=\"anonymous\">";
-	private static final String BOOTSTRAP_JS_PATH = "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3" +
-			".6/js/bootstrap.min.js\"></script>";
-	private static final String JQUERY_PATH = "<script   src=\"https://code.jquery.com/jquery-1.12.2.min.js\" " +
-			"crossorigin=\"anonymous\"></script>";
+	private static final String BOOTSTRAP_CSS_PATH = "<link rel=\"stylesheet\" href=\"resources/css/" +
+			"bootstrap.min.css\">";
+	private static final String BOOTSTRAP_CSS_THEME = "<link rel=\"stylesheet\" href=\"resources/css/" +
+			"bootstrap-theme.min.css\">";
+	private static final String BOOTSTRAP_JS_PATH = "<script src=\"resources/js/bootstrap.min.js\"></script>";
+	private static final String JQUERY_PATH = "<script src=\"resources/js/jquery-3.1.1.min.js\"></script>";
 	private static final String UPDATE_EMPLOYEE_JS_PATH = "<script src=\"resources/js/updateEmployee.js\"></script>";
 	private static final String FAVICON_PATH = "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" " +
 			"href=\"resources/images/favicon.png\">";
